@@ -18,12 +18,12 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Episode Cards Component.
 -   [x] Episodes Table Component.
 -   [x] Finalize minified player styles and make it responsible as well.
--   [ ] Minified Player for smaller screens.
+-   [x] Add Eslint/Prettier configurations.
+-   [x] Minified Player for smaller screens.
 -   [ ] Player Controls loop/suffle for XS resolutions. (Implements a way to open the side Player)
 
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.
--   [ ] Add Eslint/Prettier configurations.
 -   [ ] Implements dark mode.
 -   [ ] Create a landing page.
 -   [ ] Save users favorite shows. (at first, using LocalStorage)
