@@ -1,8 +1,8 @@
-import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 import styles from './styles.module.scss';
-import Link from 'next/link';
 
 type TEpisode = {
     id: string;
@@ -12,12 +12,12 @@ type TEpisode = {
     thumbnail: string;
     duration: number;
     parsedDuration: string;
-}
+};
 
 type TEpisodeCardProps = {
     episode: TEpisode;
     onButtonClick: () => void;
-}
+};
 
 export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
     return (
@@ -27,8 +27,8 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
                 height={192}
                 src={episode.thumbnail}
                 alt={episode.title}
-                objectFit="cover" 
-                />
+                objectFit="cover"
+            />
             <div className={styles.episodeDetails}>
                 <Link href={`/episodes/${episode.id}`}>
                     <a>{episode.title}</a>
@@ -39,8 +39,8 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
             </div>
 
             <button type="button" onClick={onButtonClick}>
-                <img src="/play-green.svg" alt="Tocar episódio"/>
+                <img src="/play-green.svg" alt="Tocar episódio" />
             </button>
         </li>
-    )
+    );
 }

@@ -1,14 +1,13 @@
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { format, parseISO } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
 
+import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
-import { usePlayer } from '../../contexts/PlayerContext';
-
 import styles from './episode.module.scss';
 
 type IEpisode = {
@@ -37,21 +36,15 @@ export default function Episode({ episode }: TEpisodeProps) {
             </Head>
 
             <div className={styles.thumbnailContainer}>
-                <Link href="/">                    
+                <Link href="/">
                     <button type="button">
                         <img src="/arrow-left.svg" alt="Voltar" />
                     </button>
                 </Link>
 
-                <Image
-                width={700}
-                height={160}
-                src={episode.thumbnail}
-                objectFit="cover" />
+                <Image width={700} height={160} src={episode.thumbnail} objectFit="cover" />
 
-                <button
-                    type="button"
-                    onClick={() => play(episode)}>
+                <button type="button" onClick={() => play(episode)}>
                     <img src="/play.svg" alt="Tocar episodio" />
                 </button>
             </div>
@@ -65,7 +58,8 @@ export default function Episode({ episode }: TEpisodeProps) {
 
             <div
                 className={styles.description}
-                dangerouslySetInnerHTML={{__html: episode.description}} />
+                dangerouslySetInnerHTML={{ __html: episode.description }}
+            />
         </div>
     );
 }
@@ -73,9 +67,9 @@ export default function Episode({ episode }: TEpisodeProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
         paths: [],
-        fallback: 'blocking',
-    }
-}
+        fallback: 'blocking'
+    };
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const { id } = context.params;
@@ -86,19 +80,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
         title: data.title,
         thumbnail: data.thumbnail,
         members: 'Juquinha, Aninha e Trevor',
-        publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', { 
-            locale: ptBR,
-          }),
-          duration: data.audio_length_sec,
-          parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
+        publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', {
+            locale: ptBR
+        }),
+        duration: data.audio_length_sec,
+        parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
         description: data.description,
-        url: data.audio,
-      }
+        url: data.audio
+    };
 
     return {
         props: {
-            episode,
+            episode
         },
-        revalidate: 60 * 60 * 24,
-    }
-}
+        revalidate: 60 * 60 * 24
+    };
+};

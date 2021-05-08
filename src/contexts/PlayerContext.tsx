@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode, useContext, useRef, useEffect } from "react";
+import { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 
 type TEpisode = {
     title: string;
@@ -32,79 +32,77 @@ type TPlayerContextData = {
 
 type IPlayerProviderProps = {
     children: ReactNode;
-}
+};
 
 export const PlayerContext = createContext({} as TPlayerContextData);
 
 export function PlayerProvider({ children }: IPlayerProviderProps) {
-    const [ episodeList, setEpisodeList ] = useState<TEpisode[]>([]);
-    const [ currentEpisodeIndex, setCurrentEpisodeIndex ] = useState(0);
-    const [ progress, setProgress] = useState(0);
-    const [ isPlaying, setIsPlaying ] = useState(false);
-    const [ looping, setLooping ] = useState(false);
-    const [ shuffling, setShuffling ] = useState(false);
+    const [episodeList, setEpisodeList] = useState<TEpisode[]>([]);
+    const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [looping, setLooping] = useState(false);
+    const [shuffling, setShuffling] = useState(false);
 
     const audioRef = useRef(null);
 
     const hasPrevious = currentEpisodeIndex > 0;
-    const hasNext = shuffling || (currentEpisodeIndex + 1) < episodeList.length;
+    const hasNext = shuffling || currentEpisodeIndex + 1 < episodeList.length;
     const episode = episodeList[currentEpisodeIndex];
 
     function play(episode: TEpisode) {
-      setEpisodeList([episode])
-      setCurrentEpisodeIndex(0);
-      setIsPlaying(true);
+        setEpisodeList([episode]);
+        setCurrentEpisodeIndex(0);
+        setIsPlaying(true);
     }
 
     function playEpisodeList(list: TEpisode[], index: number) {
         setEpisodeList(list);
-        setCurrentEpisodeIndex(index)
+        setCurrentEpisodeIndex(index);
         setIsPlaying(true);
     }
 
     function togglePlay() {
-        setIsPlaying(state => !state);
+        setIsPlaying((state) => !state);
     }
 
     function setPlayingState(state: boolean) {
         setIsPlaying(state);
     }
 
-
     function playNext() {
-        if(shuffling) {
-            const randomNextEpisode = (Math.floor(Math.random() * (episodeList.length - 1)));
+        if (shuffling) {
+            const randomNextEpisode = Math.floor(Math.random() * (episodeList.length - 1));
 
             setCurrentEpisodeIndex(randomNextEpisode);
             return;
         }
 
-        if (hasNext)
-            setCurrentEpisodeIndex(state => state + 1);
+        if (hasNext) setCurrentEpisodeIndex((state) => state + 1);
     }
 
     function playPrevious() {
-        if (hasPrevious)
-            setCurrentEpisodeIndex(state => state - 1);
+        if (hasPrevious) setCurrentEpisodeIndex((state) => state - 1);
     }
 
     function toggleLoop() {
-        setLooping(state => !state);
+        setLooping((state) => !state);
     }
 
     function toggleShuffle() {
-        setShuffling(state => !state);
+        setShuffling((state) => !state);
     }
 
     function clearPlayerState() {
-        setEpisodeList([])
-        setCurrentEpisodeIndex(0)
+        setEpisodeList([]);
+        setCurrentEpisodeIndex(0);
     }
 
     function setupProgressListener() {
         audioRef.current.currentTime = 0;
 
-        audioRef.current.addEventListener('timeupdate', () => setProgress(audioRef.current.currentTime)
+        audioRef.current.addEventListener('timeupdate', () =>
+            setProgress(audioRef.current.currentTime)
         );
     }
 
@@ -114,7 +112,7 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
     }
 
     function handleEpisodeEnded() {
-        if(hasNext) {
+        if (hasNext) {
             playNext();
         } else {
             clearPlayerState();
@@ -128,7 +126,7 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
         const action = isPlaying ? 'play' : 'pause';
 
         audioRef.current[action]();
-    }, [isPlaying])
+    }, [isPlaying]);
 
     return (
         <PlayerContext.Provider
@@ -151,11 +149,12 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
                 toggleLoop,
                 toggleShuffle,
                 clearPlayerState,
-                handleSliderChange,
-                }}>
+                handleSliderChange
+            }}>
             {children}
 
-            { episode && (
+            {episode && (
+                // eslint-disable-next-line jsx-a11y/media-has-caption
                 <audio
                     ref={audioRef}
                     src={episode.url}
@@ -165,8 +164,8 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
                     onPause={() => setPlayingState(false)}
                     onLoadedMetadata={setupProgressListener}
                     autoPlay
-                    />
-                )}
+                />
+            )}
         </PlayerContext.Provider>
     );
 }
