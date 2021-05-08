@@ -8,7 +8,8 @@
         "start": "next start",
         "server": "json-server db.json -H 0.0.0.0 -w -d 750 -p 3333",
         "lint": "eslint --fix .",
-        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+        "prepare": "husky install"
     },
     "dependencies": {
         "axios": "^0.21.1",
@@ -36,15 +37,5 @@
         "lint-staged": "^11.0.0",
         "prettier": "^2.2.1",
         "typescript": "^4.2.4"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "./**/*.{js,jsx,ts,tsx}": [
-            "eslint --fix"
-        ]
     }
 }
