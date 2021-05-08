@@ -71,22 +71,8 @@ export default function Episode({ episode }: TEpisodeProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { data } = await api.get(`episodes`, {
-        params: {
-          _limit: 2,
-          _sort: 'published_at',
-          _order: 'desc',
-        }
-      });
-
-    const paths = data.map(episode => ({
-        params: {
-            id: episode.id,
-        }
-    }))
-
     return {
-        paths,
+        paths: [],
         fallback: 'blocking',
     }
 }
@@ -94,19 +80,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
     const { id } = context.params;
     const { data } = await api(`/episodes/${id}`);
-    
+
     const episode = {
         id: data.id,
         title: data.title,
         thumbnail: data.thumbnail,
-        members: data.members,
-        publishedAt: format(parseISO(data.published_at), 'd MMM yy', { 
-          locale: ptBR,
-        }),
-        duration: Number(data.file.duration),
-        parsedDuration: convertDurationToTimeString(Number(data.file.duration)),
+        members: 'Juquinha, Aninha e Trevor',
+        publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', { 
+            locale: ptBR,
+          }),
+          duration: data.audio_length_sec,
+          parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
         description: data.description,
-        url: data.file.url,
+        url: data.audio,
       }
 
     return {

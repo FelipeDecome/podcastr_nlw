@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode, useMemo, useContext } from "react";
+import { createContext, useState, ReactNode, useContext, useRef, useEffect } from "react";
 
 type TEpisode = {
     title: string;
@@ -11,6 +11,8 @@ type TEpisode = {
 type TPlayerContextData = {
     episodeList: TEpisode[];
     currentEpisodeIndex: number;
+    episode: TEpisode;
+    progress: number;
     isPlaying: boolean;
     hasNext: boolean;
     hasPrevious: boolean;
@@ -25,6 +27,7 @@ type TPlayerContextData = {
     toggleLoop: () => void;
     toggleShuffle: () => void;
     clearPlayerState: () => void;
+    handleSliderChange: (duration: number) => void;
 };
 
 type IPlayerProviderProps = {
@@ -34,12 +37,19 @@ type IPlayerProviderProps = {
 export const PlayerContext = createContext({} as TPlayerContextData);
 
 export function PlayerProvider({ children }: IPlayerProviderProps) {
-    const [ episodeList, setEpisodeList ] = useState([]);
+    const [ episodeList, setEpisodeList ] = useState<TEpisode[]>([]);
     const [ currentEpisodeIndex, setCurrentEpisodeIndex ] = useState(0);
+    const [ progress, setProgress] = useState(0);
     const [ isPlaying, setIsPlaying ] = useState(false);
     const [ looping, setLooping ] = useState(false);
     const [ shuffling, setShuffling ] = useState(false);
-    
+
+    const audioRef = useRef(null);
+
+    const hasPrevious = currentEpisodeIndex > 0;
+    const hasNext = shuffling || (currentEpisodeIndex + 1) < episodeList.length;
+    const episode = episodeList[currentEpisodeIndex];
+
     function play(episode: TEpisode) {
       setEpisodeList([episode])
       setCurrentEpisodeIndex(0);
@@ -60,8 +70,6 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
         setIsPlaying(state);
     }
 
-    const hasPrevious = useMemo(() => currentEpisodeIndex > 0, [currentEpisodeIndex])
-    const hasNext = useMemo(() => shuffling || (currentEpisodeIndex + 1) < episodeList.length, [currentEpisodeIndex, episodeList, shuffling]);
 
     function playNext() {
         if(shuffling) {
@@ -93,11 +101,42 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
         setCurrentEpisodeIndex(0)
     }
 
+    function setupProgressListener() {
+        audioRef.current.currentTime = 0;
+
+        audioRef.current.addEventListener('timeupdate', () => setProgress(audioRef.current.currentTime)
+        );
+    }
+
+    function handleSliderChange(duration: number) {
+        audioRef.current.currentTime = duration;
+        setProgress(duration);
+    }
+
+    function handleEpisodeEnded() {
+        if(hasNext) {
+            playNext();
+        } else {
+            clearPlayerState();
+            setProgress(0);
+        }
+    }
+
+    useEffect(() => {
+        if (!audioRef.current) return;
+
+        const action = isPlaying ? 'play' : 'pause';
+
+        audioRef.current[action]();
+    }, [isPlaying])
+
     return (
         <PlayerContext.Provider
             value={{
                 episodeList,
                 currentEpisodeIndex,
+                episode,
+                progress,
                 isPlaying,
                 hasNext,
                 hasPrevious,
@@ -111,9 +150,23 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
                 playPrevious,
                 toggleLoop,
                 toggleShuffle,
-                clearPlayerState
+                clearPlayerState,
+                handleSliderChange,
                 }}>
             {children}
+
+            { episode && (
+                <audio
+                    ref={audioRef}
+                    src={episode.url}
+                    onEnded={handleEpisodeEnded}
+                    loop={looping}
+                    onPlay={() => setPlayingState(true)}
+                    onPause={() => setPlayingState(false)}
+                    onLoadedMetadata={setupProgressListener}
+                    autoPlay
+                    />
+                )}
         </PlayerContext.Provider>
     );
 }

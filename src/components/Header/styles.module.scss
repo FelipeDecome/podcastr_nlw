@@ -1,6 +1,6 @@
 .headerContainer {
     background: var(--white);
-    height: 6.5rem;
+    height: var(--header-height);
 
     display: flex;
     align-items: center;
@@ -18,5 +18,11 @@
     span {
         margin-left: auto;
         text-transform: capitalize;
+    }
+}
+
+@media (max-width: 767px) {
+    .headerContainer p {
+        display: none;
     }
 }

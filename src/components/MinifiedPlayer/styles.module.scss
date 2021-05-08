@@ -1,0 +1,136 @@
+.container {
+    padding-right: 4rem;
+    height: var(--minified-player-height); 
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    
+    background: var(--purple-500);
+    overflow: hidden;
+    
+    > div:first-child {
+        height: var(--minified-player-height);
+        aspect-ratio: 16 / 9;
+    }
+
+    .emptyPlayer {
+        flex: 1;
+        max-width: 20%;
+        display: flex;
+        padding: 0.5rem 0;
+        
+        &::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(145, 100, 250, 0) 100%);
+            border: 1px dashed var(--purple-300);
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
+    }
+
+    .playerContent {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        strong {
+            font-family: Lexend, sans-serif;
+            font-weight: 600;
+            color: var(--white);                
+        }
+
+        .episodeDetails {    
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            overflow: hidden;
+
+            
+            strong {
+                max-width: 80%;    
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            span {
+                white-space: nowrap;
+                margin-left: 0.75rem;
+                padding-left: 0.75rem;
+                position: relative;
+                font-size: 0.875rem;
+                font-weight: 400;
+                color: var(--white);
+                opacity: 0.6;
+
+                &::before {
+                    content: "-";
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    
+        > div:not(:first-child) {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+                
+            .controls div {
+                margin-top: 0;
+            }
+
+            .progress {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                &.empty {
+                    opacity: 0.5;
+                }
+
+                span {
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                    color: var(--white);
+                }
+
+                .slider {
+                    flex: 1;
+
+                    .emptySlider {
+                        height: 4px;
+                        border-radius: 2px;
+                        background: var(--purple-300);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 1.5rem;
+
+        .emptyPlayer,
+        > div:first-child { /* Esconde a imagem */
+            display: none!important;
+        }
+
+        .playerContent {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+
+}
