@@ -37,13 +37,14 @@ The project goal was to build a web platform to listen to podcasts.
 #### _Done_
 
 -   [x] Add Eslint/Prettier configurations.
+-   [x] Content max-width 1440px.
 
 <hr/>
 
 #### _Ongoing_
 
 -   [ ] Player Controls loop/suffle for XS resolutions. (Implements a way to open the side Player)
--   [ ] Fix paddings on small resolutions.
+-   [ ] Fix paddings on small resolutions. (Optional)
 -   [ ] Button fix hover opacity.
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.

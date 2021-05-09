@@ -4,11 +4,19 @@
     height: calc(100vh - var(--header-height) - var(--footer-height));
     overflow-y: scroll;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     h2 {
         margin-top: 3rem;
         margin-bottom: 1.5rem;
     }
     
+    section {
+        max-width: 63.5rem;
+    }
+
     .latestEpisodes {
         ul {
             display: flex;
