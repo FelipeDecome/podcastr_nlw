@@ -38,11 +38,13 @@ The project goal was to build a web platform to listen to podcasts.
 
 -   [x] Add Eslint/Prettier configurations.
 -   [x] Content max-width 1440px.
+-   [x] Fix Last Releases container allignment.
 
 <hr/>
 
 #### _Ongoing_
 
+-   [ ] Fix Image size breaking on Tablet Devices.
 -   [ ] Player Controls loop/suffle for XS resolutions. (Implements a way to open the side Player)
 -   [ ] Fix paddings on small resolutions. (Optional)
 -   [ ] Button fix hover opacity.
