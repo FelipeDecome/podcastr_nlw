@@ -35,6 +35,12 @@
 
 @media (max-width: 767px) {
     .homepage {
+        align-items: center;
+
+
+        section {
+            max-width: 40rem;
+        }
 
         .latestEpisodes {
             ul {
