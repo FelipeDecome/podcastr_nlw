@@ -40,6 +40,14 @@
     }
 }
 
+@media (max-width: 559px) {
+    .footerContainer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
 @media (max-width: 767px) {
     .footerContainer {
         padding: 0 1.5rem;
@@ -49,9 +57,5 @@
 @media (max-width: 992px) {
     .footerContainer {
         padding: 0 2rem;
-
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
     }
 }
