@@ -1,5 +1,5 @@
 .homepage {
-    padding: 0 4rem;
+    padding: 0 var(--side-padding);
 
     height: calc(100vh - var(--header-height) - var(--footer-height));
     overflow-y: scroll;

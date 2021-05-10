@@ -1,5 +1,6 @@
 .container {
-    padding-right: 4rem;
+    --top-padding: 0.5rem;
+    padding: var(--top-padding) var(--side-padding);
     height: var(--minified-player-height); 
 
     display: flex;
@@ -7,19 +8,22 @@
     gap: 2rem;
     
     background: var(--purple-500);
-    overflow: hidden;
     
+    .emptyPlayer,
     > div:first-child {
-        height: var(--minified-player-height);
-        aspect-ratio: 16 / 9;
+        height: calc(var(--minified-player-height) - 1rem);
+        width: calc(var(--minified-player-height) - 1rem);
+        min-width: calc(var(--minified-player-height) - 1rem);
     }
 
-    .emptyPlayer {
-        flex: 1;
-        max-width: 20%;
+    > div:first-child:not(.emptyPlayer) {
+        border: 2px solid var(--gray-50);
+        border-radius: 1.5rem;
+    }
+    
+    .emptyPlayer {    
         display: flex;
-        padding: 0.5rem 0;
-        
+            
         &::after {
             content: '';
             width: 100%;
@@ -27,11 +31,13 @@
 
             background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(145, 100, 250, 0) 100%);
             border: 1px dashed var(--purple-300);
-            border-radius: 0 1.5rem 1.5rem 0;
+            border-radius: 1.5rem;
         }
     }
 
     .playerContent {
+        min-width: 0; /* Fix flex breaking on white-space: norap; */
+
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -51,7 +57,7 @@
 
             
             strong {
-                max-width: 80%;    
+                max-width: 70%;    
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -118,7 +124,7 @@
 
 @media (max-width: 767px) {
     .container {
-        padding: 0 1.5rem;
+        --top-padding: 0;
 
         .emptyPlayer,
         > div:first-child { /* Esconde a imagem */

@@ -27,7 +27,8 @@ The project goal was to build a web platform to listen to podcasts.
 #### _Ongoing_
 
 -   [ ] Implements dark mode.
--   [ ] Create a landing page.
+-   [ ] Create a landing page. 
+
 -   [ ] Save users favorite shows. (at first, using LocalStorage)
 -   [ ] List episodes based on users favorite shows.
 -   [ ] Save user progress. (at first, using LocalStorage)
@@ -39,18 +40,19 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Add Eslint/Prettier configurations.
 -   [x] Content max-width 1440px.
 -   [x] Fix Last Releases container allignment.
+-   [x] Fix paddings on small resolutions. (Optional)
+-   [x] Fix Image size breaking on Tablet Devices.
+-   [x] Fix Minified Player Buttons play/pause size.
 
 <hr/>
 
 #### _Ongoing_
 
--   [ ] Fix Image size breaking on Tablet Devices.
+-   [ ] Create components for icons to improve their usage.
 -   [ ] Player Controls loop/suffle for XS resolutions. (Implements a way to open the side Player)
--   [ ] Fix paddings on small resolutions. (Optional)
 -   [ ] Button fix hover opacity.
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.
--   [ ] Create components for icons to improve their usage.
 
 <br>
 

@@ -8,6 +8,7 @@
     --minified-player-height: 8.5rem;
     --header-height: 6.5rem;
     --footer-height: 4.5rem;
+    --side-padding: 4rem;
 
     --white: #FFF;
 
@@ -32,6 +33,10 @@
 }
 
 @media (max-width: 767px) {
+    :root {
+        --side-padding: 2rem;
+    }
+
     html {
         font-size: 75%;
     }
@@ -40,6 +45,7 @@
 @media (max-width: 559px) {
     :root {
         --footer-height: 6.5rem;
+        --side-padding: 1.5rem;
     }
 }
 
