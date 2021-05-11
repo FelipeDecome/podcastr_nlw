@@ -12,6 +12,10 @@
 
         transition: filter 0.2s;
 
+        img {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
         
         &:disabled {
             cursor: not-allowed;
@@ -49,13 +53,27 @@
         }
 
     }
+
+    &.minified button.playButton img{
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 767px) {
     .buttonsContainer.minified {
-        button:first-child,
-        button:last-child {
-            display: none;
+        gap: 1rem; 
+
+        button {
+            img {
+                width: 1.75rem;
+                height: 1.75rem;
+            }
+
+            &.playButton img {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
         }
     }    
 }

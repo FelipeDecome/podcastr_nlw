@@ -26,6 +26,7 @@ The project goal was to build a web platform to listen to podcasts.
 
 #### _Ongoing_
 
+-   [ ] Create a new color scheme.
 -   [ ] Implements dark mode.
 -   [ ] Create a landing page. 
 
@@ -43,13 +44,13 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Fix paddings on small resolutions. (Optional)
 -   [x] Fix Image size breaking on Tablet Devices.
 -   [x] Fix Minified Player Buttons play/pause size.
+-   [x] Player Controls loop/suffle for XS resolutions.
 
 <hr/>
 
 #### _Ongoing_
 
 -   [ ] Create components for icons to improve their usage.
--   [ ] Player Controls loop/suffle for XS resolutions. (Implements a way to open the side Player)
 -   [ ] Button fix hover opacity.
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.
