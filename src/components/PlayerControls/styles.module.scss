@@ -10,23 +10,25 @@
         border: 0;
         font-size: 0;
 
-        transition: filter 0.2s;
+        transition: opacity 0.2s, filter 0.2s, background 0.2s;
         
         &:disabled {
             cursor: not-allowed;
             opacity: 0.2;
         }
         
-        &:hover:not(:disabled) {
-            filter: brightness(0.7);
+        &:hover:not(:disabled):not(.active) {
+            opacity: 0.6;
         } 
         
         &.active {
-            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
-        }
+            &:hover {
+                filter: brightness(1.2);
+            }
 
-        &.active:hover {
-            filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+            svg path{
+                stroke: var(--green-500);
+            }
         }
 
         &.playButton:not(.minified button.playButton) {
@@ -36,22 +38,11 @@
             border-radius: 1rem;
             background: var(--purple-400);
             
-            transition: filter 0.2s, background 0.2s;
-
-            &:hover {
-                filter: brightness(0.97);
-            }
-
             &.playing {
                 background: var(--purple-800);
             }
         }
 
-    }
-
-    &.minified button.playButton img{
-        width: 2rem;
-        height: 2rem;
     }
 }
 
@@ -60,12 +51,12 @@
         gap: 1rem; 
 
         button {
-            img {
+            svg {
                 width: 1.75rem;
                 height: 1.75rem;
             }
 
-            &.playButton img {
+            &.playButton svg {
                 width: 2.5rem;
                 height: 2.5rem;
             }

@@ -34,7 +34,8 @@
 .currentEpisode {
     text-align: center;
 
-    img {
+    > div {
+        border: 2px solid var(--purple-400);
         border-radius: 1.5rem;
     }
 
@@ -65,7 +66,7 @@
 
     border: 1.5px dashed var(--purple-300);
     border-radius: 1.5rem;
-    background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    background: var(--purple-gradient);
 }
 
 .progress {

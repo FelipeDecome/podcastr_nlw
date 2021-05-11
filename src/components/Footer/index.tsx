@@ -1,10 +1,11 @@
+import IconGithub from '../../assets/icons/github.svg';
 import styles from './styles.module.scss';
 
 export function Footer() {
     return (
         <div className={styles.footerContainer}>
             <a href="https://www.github.com/felipedecome" target="_blank" rel="noreferrer">
-                <img src="/github.svg" alt="Github" />
+                <IconGithub />
                 Desenvolvido por
                 <span>&nbsp;Felipe Decome</span>.
             </a>

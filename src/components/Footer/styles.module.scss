@@ -19,18 +19,28 @@
 
         font-family: Lexend, sans-serif;
         font-weight: 600;
-        color: var(--gray-500);
+        color: var(--gray-800);
 
-        &:hover span {
-            color: var(--purple-800);
+        &:hover {
+            span {
+                color: var(--purple-800);
+            }
+
+            svg path {
+                fill: var(--purple-800);
+            }
         }
 
         span {
-            color: var(--gray-800);
+            transition: color 0.2s;
         }
 
-        img {
+        svg {
             margin-right: 0.75rem;
+
+            path {
+                transition: fill 0.2s;
+            }
         }
     }
 

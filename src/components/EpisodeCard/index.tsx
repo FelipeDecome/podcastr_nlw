@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import IconPlayGreen from '../../assets/icons/play-green.svg';
 import styles from './styles.module.scss';
 
 type TEpisode = {
@@ -39,7 +40,7 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
             </div>
 
             <button type="button" onClick={onButtonClick}>
-                <img src="/play-green.svg" alt="Tocar episódio" />
+                <IconPlayGreen />
             </button>
         </li>
     );

@@ -3,6 +3,8 @@ import 'rc-slider/assets/index.css';
 import Image from 'next/image';
 import Slider from 'rc-slider';
 
+import IconNotPlaying from '../../assets/icons/not-playing.svg';
+import IconPlaying from '../../assets/icons/playing.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { PlayerControls } from '../PlayerControls';
@@ -13,21 +15,30 @@ export function Player() {
 
     return (
         <div className={styles.playerContainer}>
-            <header>
-                <img src="/playing.svg" alt="Tocando agora" />
-                <strong>Tocando agora </strong>
-            </header>
-
             {episode ? (
-                <div className={styles.currentEpisode}>
-                    <Image width={592} height={592} src={episode.thumbnail} objectFit="cover" />
-                    <strong>{episode.title}</strong>
-                    <span>{episode.members}</span>
-                </div>
+                <>
+                    <header>
+                        <IconPlaying />
+                        <strong>Tocando agora</strong>
+                    </header>
+
+                    <div className={styles.currentEpisode}>
+                        <Image width={592} height={592} src={episode.thumbnail} objectFit="cover" />
+                        <strong>{episode.title}</strong>
+                        <span>{episode.members}</span>
+                    </div>
+                </>
             ) : (
-                <div className={styles.emptyPlayer}>
-                    <strong>Selecione um podcast para ouvir</strong>
-                </div>
+                <>
+                    <header>
+                        <IconNotPlaying />
+                        <strong>Nada tocando</strong>
+                    </header>
+
+                    <div className={styles.emptyPlayer}>
+                        <strong>Selecione um podcast para ouvir</strong>
+                    </div>
+                </>
             )}
 
             <footer className={!episode ? styles.empty : ''}>
@@ -39,9 +50,9 @@ export function Player() {
                                 max={episode?.duration}
                                 value={progress}
                                 onChange={handleSliderChange}
-                                trackStyle={{ backgroundColor: '#04d361' }}
-                                railStyle={{ backgroundColor: '#9f75ff' }}
-                                handleStyle={{ borderColor: '#04d361' }}
+                                trackStyle={{ backgroundColor: '#03D8E5' }}
+                                railStyle={{ backgroundColor: '#822B80' }}
+                                handleStyle={{ borderColor: '#03D8E5' }}
                             />
                         ) : (
                             <div className={styles.emptySlider} />

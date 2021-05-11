@@ -1,3 +1,9 @@
+import IconPause from '../../assets/icons/pause.svg';
+import IconPlay from '../../assets/icons/play.svg';
+import IconPlayNext from '../../assets/icons/play-next.svg';
+import IconPlayPrevious from '../../assets/icons/play-previous.svg';
+import IconRepeat from '../../assets/icons/repeat.svg';
+import IconShuffle from '../../assets/icons/shuffle.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import styles from './styles.module.scss';
 
@@ -28,11 +34,11 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
                 disabled={!hasEpisode || episodeList.length === 1}
                 onClick={toggleShuffle}
                 className={shuffling ? styles.active : ''}>
-                <img src="/shuffle.svg" alt="Embaralhar" />
+                <IconShuffle />
             </button>
 
             <button type="button" disabled={!hasEpisode || !hasPrevious} onClick={playPrevious}>
-                <img src="/play-previous.svg" alt="Tocar anterior" />
+                <IconPlayPrevious />
             </button>
 
             <button
@@ -40,15 +46,11 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
                 disabled={!hasEpisode}
                 className={[styles.playButton, isPlaying ? styles.playing : ''].join(' ')}
                 onClick={togglePlay}>
-                {isPlaying ? (
-                    <img src="/pause.svg" alt="Tocar" />
-                ) : (
-                    <img src="/play.svg" alt="Tocar" />
-                )}
+                {isPlaying ? <IconPause /> : <IconPlay />}
             </button>
 
             <button type="button" disabled={!hasEpisode || !hasNext} onClick={playNext}>
-                <img src="/play-next.svg" alt="Tocar próximo" />
+                <IconPlayNext />
             </button>
 
             <button
@@ -56,7 +58,7 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
                 disabled={!hasEpisode}
                 onClick={toggleLoop}
                 className={looping ? styles.active : ''}>
-                <img src="/repeat.svg" alt="Repetir" />
+                <IconRepeat />
             </button>
         </div>
     );

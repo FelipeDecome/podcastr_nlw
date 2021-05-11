@@ -5,6 +5,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import IconArrowLeft from '../../assets/icons/arrow-left.svg';
+import IconPlay from '../../assets/icons/play.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
@@ -38,14 +40,14 @@ export default function Episode({ episode }: TEpisodeProps) {
             <div className={styles.thumbnailContainer}>
                 <Link href="/">
                     <button type="button">
-                        <img src="/arrow-left.svg" alt="Voltar" />
+                        <IconArrowLeft />
                     </button>
                 </Link>
 
                 <Image width={700} height={160} src={episode.thumbnail} objectFit="cover" />
 
                 <button type="button" onClick={() => play(episode)}>
-                    <img src="/play.svg" alt="Tocar episodio" />
+                    <IconPlay />
                 </button>
             </div>
 

@@ -28,11 +28,9 @@ The project goal was to build a web platform to listen to podcasts.
 
 -   [ ] Create a new color scheme.
 -   [ ] Implements dark mode.
--   [ ] Create a landing page. 
-
--   [ ] Save users favorite shows. (at first, using LocalStorage)
--   [ ] List episodes based on users favorite shows.
--   [ ] Save user progress. (at first, using LocalStorage)
+-   [ ] Create a landing page.
+-   [ ] Implements a new Card design without the members label.
+-   [ ] Remove members column in the Episodes table.
 
 ## Chores
 
@@ -50,7 +48,7 @@ The project goal was to build a web platform to listen to podcasts.
 
 #### _Ongoing_
 
--   [ ] Create components for icons to improve their usage.
+-   [ ] Improve icons usage.
 -   [ ] Button fix hover opacity.
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.

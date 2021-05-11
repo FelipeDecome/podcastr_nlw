@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import IconPlayGreen from '../../assets/icons/play-green.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import styles from './styles.module.scss';
 
@@ -74,7 +75,7 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                                 <button
                                     type="button"
                                     onClick={() => playEpisodeList(allEpisodes, episodeIndex)}>
-                                    <img src="/play-green.svg" alt="Tocar episódio" />
+                                    <IconPlayGreen />
                                 </button>
                             </td>
                         </tr>

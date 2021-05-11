@@ -48,9 +48,9 @@ export function MinifiedPlayer() {
                                     max={episode?.duration}
                                     value={progress}
                                     onChange={handleSliderChange}
-                                    trackStyle={{ backgroundColor: '#04d361' }}
-                                    railStyle={{ backgroundColor: '#9f75ff' }}
-                                    handleStyle={{ borderColor: '#04d361' }}
+                                    trackStyle={{ backgroundColor: '#03D8E5' }}
+                                    railStyle={{ backgroundColor: '#822B80' }}
+                                    handleStyle={{ borderColor: '#03D8E5' }}
                                 />
                             ) : (
                                 <div className={styles.emptySlider} />
