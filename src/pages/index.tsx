@@ -13,12 +13,17 @@ import styles from './home.module.scss';
 interface IEpisode {
     id: string;
     title: string;
+    podcastInfo: {
+        title: string;
+        publisher: string;
+    };
     members: string;
     publishedAt: string;
     thumbnail: string;
     duration: number;
     parsedDuration: string;
     url: string;
+    description: string;
 }
 
 type THomeProps = {
@@ -66,6 +71,10 @@ export const getStaticProps: GetStaticProps = async () => {
     const episodes = data.episodes.map((episode) => {
         return {
             id: episode.id,
+            podcastInfo: {
+                title: data.title,
+                publisher: data.publisher
+            },
             title: episode.title,
             thumbnail: episode.thumbnail,
             members: 'Juquinha, Aninha e Trevor',
@@ -74,7 +83,11 @@ export const getStaticProps: GetStaticProps = async () => {
             }),
             duration: episode.audio_length_sec,
             parsedDuration: convertDurationToTimeString(Number(episode.audio_length_sec)),
-            url: episode.audio
+            url: episode.audio,
+            description: String(episode.description)
+                .replaceAll('<p>', '')
+                .replaceAll('</p>', '')
+                .replaceAll('&nbsp;', '')
         };
     });
 
