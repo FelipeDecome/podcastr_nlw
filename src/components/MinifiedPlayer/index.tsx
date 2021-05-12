@@ -28,10 +28,7 @@ export function MinifiedPlayer() {
 
             <div className={styles.playerContent}>
                 {episode ? (
-                    <div className={styles.episodeDetails}>
-                        <strong title={episode.title}>{episode.title}</strong>
-                        <span title={episode.members}>{episode.members}</span>
-                    </div>
+                    <strong title={episode.title}>{episode.title}</strong>
                 ) : (
                     <strong>Selecione um podcast para ouvir</strong>
                 )}

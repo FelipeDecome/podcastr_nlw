@@ -8,7 +8,6 @@ import styles from './styles.module.scss';
 type TEpisode = {
     id: string;
     title: string;
-    members: string;
     publishedAt: string;
     thumbnail: string;
     duration: number;
@@ -34,9 +33,11 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
                 <Link href={`/episodes/${episode.id}`}>
                     <a>{episode.title}</a>
                 </Link>
-                <p>{episode.members}</p>
-                <span>{episode.publishedAt}</span>
-                <span>{episode.parsedDuration}</span>
+                {/* <p>{episode.description}</p> */}
+                <p>
+                    <span>{episode.publishedAt}</span>
+                    <span>{episode.parsedDuration}</span>
+                </p>
             </div>
 
             <button type="button" onClick={onButtonClick}>

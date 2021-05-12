@@ -30,7 +30,6 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                 <tr>
                     <th></th>
                     <th>Podcast</th>
-                    <th className={styles.hiddenOn_SM_MD}>Integrantes</th>
                     <th>Data</th>
                     <th className={styles.hiddenOn_SM}>Duração</th>
                     <th></th>
@@ -62,7 +61,6 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                                 </Link>
                             </td>
 
-                            <td className={styles.hiddenOn_SM_MD}>{episode.members}</td>
                             <td
                                 className={styles.hiddenOn_XS_SM}
                                 style={{

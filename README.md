@@ -22,6 +22,8 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Finalize minified player styles and make it responsible as well.
 -   [x] Minified Player for smaller screens.
 -   [x] Create a new color scheme.
+-   [x] Remove members column in the Episodes table.
+-   [x] Remove members from players.
 
 <hr/>
 
@@ -29,8 +31,7 @@ The project goal was to build a web platform to listen to podcasts.
 
 -   [ ] Implements dark mode.
 -   [ ] Create a landing page.
--   [ ] Implements a new Card design without the members label.
--   [ ] Remove members column in the Episodes table.
+-   [ ] Implements a new Card design.
 
 ## Chores
 

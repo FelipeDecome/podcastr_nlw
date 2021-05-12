@@ -25,7 +25,6 @@ export function Player() {
                     <div className={styles.currentEpisode}>
                         <Image width={592} height={592} src={episode.thumbnail} objectFit="cover" />
                         <strong>{episode.title}</strong>
-                        <span>{episode.members}</span>
                     </div>
                 </>
             ) : (

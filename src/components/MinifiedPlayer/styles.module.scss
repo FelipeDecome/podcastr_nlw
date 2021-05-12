@@ -47,40 +47,11 @@
             font-family: Lexend, sans-serif;
             font-weight: 600;
             color: var(--white);                
-        }
-
-        .episodeDetails {    
-            display: flex;
-            align-items: center;
+        
             max-width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             overflow: hidden;
-
-            
-            strong {
-                max-width: 70%;    
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-
-            span {
-                white-space: nowrap;
-                margin-left: 0.75rem;
-                padding-left: 0.75rem;
-                position: relative;
-                font-size: 0.875rem;
-                font-weight: 400;
-                color: var(--white);
-                opacity: 0.6;
-
-                &::before {
-                    content: "-";
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                }
-            }
         }
     
         > div:not(:first-child) {
