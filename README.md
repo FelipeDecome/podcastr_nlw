@@ -21,12 +21,12 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Episodes Table Component.
 -   [x] Finalize minified player styles and make it responsible as well.
 -   [x] Minified Player for smaller screens.
+-   [x] Create a new color scheme.
 
 <hr/>
 
 #### _Ongoing_
 
--   [ ] Create a new color scheme.
 -   [ ] Implements dark mode.
 -   [ ] Create a landing page.
 -   [ ] Implements a new Card design without the members label.
@@ -43,13 +43,13 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Fix Image size breaking on Tablet Devices.
 -   [x] Fix Minified Player Buttons play/pause size.
 -   [x] Player Controls loop/suffle for XS resolutions.
+-   [x] Improve icons usage.
+-   [x] Button fix hover opacity.
 
 <hr/>
 
 #### _Ongoing_
 
--   [ ] Improve icons usage.
--   [ ] Button fix hover opacity.
 -   [ ] Add Styled Components.
 -   [ ] Improve UI/UX.
 
