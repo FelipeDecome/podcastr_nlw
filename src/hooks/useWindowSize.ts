@@ -1,4 +1,6 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { useIsomorphicLayoutEffect } from '../utils/useIsomorphicLayoutEffect';
 
 type TWindowSize = {
     width: number;
@@ -11,7 +13,7 @@ export default function useWindowSize() {
         height: 768
     });
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         function updateSize() {
             setSize({
                 width: window.innerWidth,
