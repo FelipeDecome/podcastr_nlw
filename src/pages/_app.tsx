@@ -1,4 +1,5 @@
 import '../styles/global.scss';
+import '../utils/replaceAllPolyfill';
 
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
