@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import IconPlayGreen from '../../assets/icons/play-green.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
+import { PlayEpisodeButton } from '../PlayEpisodeButton';
 import styles from './styles.module.scss';
 
 type TEpisode = {
@@ -70,11 +71,12 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                             </td>
                             <td className={styles.hiddenOn_SM}>{episode.parsedDuration}</td>
                             <td>
-                                <button
+                                <PlayEpisodeButton
+                                    small
                                     type="button"
                                     onClick={() => playEpisodeList(allEpisodes, episodeIndex)}>
                                     <IconPlayGreen />
-                                </button>
+                                </PlayEpisodeButton>
                             </td>
                         </tr>
                     );

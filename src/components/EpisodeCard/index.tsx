@@ -4,6 +4,7 @@ import React from 'react';
 
 import IconPlayGreen from '../../assets/icons/play-green.svg';
 import { Heading16, Paragraph } from '../../styles/components/Text';
+import { PlayEpisodeButton } from '../PlayEpisodeButton';
 import * as Card from './styles';
 
 type TEpisode = {
@@ -46,9 +47,9 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
                     </div>
                 </div>
 
-                <button type="button" onClick={onButtonClick}>
+                <PlayEpisodeButton type="button" onClick={onButtonClick}>
                     <IconPlayGreen />
-                </button>
+                </PlayEpisodeButton>
             </Card.Header>
             <hr />
 

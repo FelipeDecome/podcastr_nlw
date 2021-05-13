@@ -55,27 +55,6 @@ export const Header = styled.header`
             margin-top: 0.5rem;
         }
     }
-
-    button {
-        width: 2.5rem;
-        height: 2.5rem;
-
-        background: var(--white);
-        border: 1px solid var(--gray-100);
-        border-radius: 0.675rem;
-        font-size: 0;
-
-        transition: filter 0.2s;
-
-        svg {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        &:hover {
-            filter: brightness(0.95);
-        }
-    }
 `;
 
 export const Content = styled.div`
