@@ -32,14 +32,21 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
 
-    img {
-        width: 4rem;
-        height: 4rem;
-        border-radius: 1rem;
+    .podcast-image {
+        font-size: 0;
+
+        div {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+        }
     }
 
     div.podcast-info {
+        flex: 1;
         display: flex;
         align-items: center;
         gap: 1rem;

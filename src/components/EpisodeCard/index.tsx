@@ -30,13 +30,15 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
         <Card.Container>
             <Card.Header>
                 <div className="podcast-info">
-                    <Image
-                        width={192}
-                        height={192}
-                        src={episode.thumbnail}
-                        alt={episode.title}
-                        objectFit="cover"
-                    />
+                    <div className="podcast-image">
+                        <Image
+                            width={192}
+                            height={192}
+                            src={episode.thumbnail}
+                            alt={episode.title}
+                            objectFit="cover"
+                        />
+                    </div>
 
                     <div>
                         <Heading16 as="h3">{episode.podcastInfo.title}</Heading16>
