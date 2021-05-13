@@ -8,6 +8,7 @@ import { EpisodeTable } from '../components/EpisodeTable';
 import { usePlayer } from '../contexts/PlayerContext';
 import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
+import { parseString } from '../utils/parseString';
 import styles from './home.module.scss';
 
 interface IEpisode {
@@ -84,10 +85,7 @@ export const getStaticProps: GetStaticProps = async () => {
             duration: episode.audio_length_sec,
             parsedDuration: convertDurationToTimeString(Number(episode.audio_length_sec)),
             url: episode.audio,
-            description: String(episode.description)
-                .replaceAll('<p>', '')
-                .replaceAll('</p>', '')
-                .replaceAll('&nbsp;', '')
+            description: parseString(episode.description)
         };
     });
 
