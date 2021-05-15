@@ -7,9 +7,9 @@ import { EpisodeCard } from '../components/EpisodeCard';
 import { EpisodeTable } from '../components/EpisodeTable';
 import { usePlayer } from '../contexts/PlayerContext';
 import { api } from '../services/api';
+import { Container } from '../styles/components/Home';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 import { parseString } from '../utils/parseString';
-import { Container } from './components/Home';
 
 interface IEpisode {
     id: string;

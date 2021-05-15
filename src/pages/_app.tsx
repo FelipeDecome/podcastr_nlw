@@ -6,8 +6,8 @@ import { MinifiedPlayer } from '../components/MinifiedPlayer';
 import { Player } from '../components/Player';
 import { AppProvider } from '../contexts/AppContext';
 import useWindowSize from '../hooks/useWindowSize';
+import { Wrapper } from '../styles/components/App';
 import GlobalStyle from '../styles/globalStyle';
-import { Wrapper } from './components/App';
 
 function MyApp({ Component, pageProps }) {
     const { width } = useWindowSize();

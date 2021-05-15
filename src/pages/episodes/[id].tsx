@@ -9,10 +9,10 @@ import IconArrowLeft from '../../assets/icons/arrow-left.svg';
 import IconPlay from '../../assets/icons/play.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
+import { Container } from '../../styles/components/Episodes';
 import { Paragraph } from '../../styles/components/Text';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { parseString } from '../../utils/parseString';
-import { Container } from '../components/Episodes';
 
 type IEpisode = {
     id: string;
