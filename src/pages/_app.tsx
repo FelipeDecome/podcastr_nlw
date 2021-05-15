@@ -1,4 +1,3 @@
-import '../styles/global.scss';
 import '../utils/replaceAllPolyfill';
 
 import { Footer } from '../components/Footer';
@@ -7,14 +6,15 @@ import { MinifiedPlayer } from '../components/MinifiedPlayer';
 import { Player } from '../components/Player';
 import { PlayerProvider } from '../contexts/PlayerContext';
 import useWindowSize from '../hooks/useWindowSize';
-import styles from '../styles/app.module.scss';
+import GlobalStyle from '../styles/globalStyle';
+import { Wrapper } from './components/App';
 
 function MyApp({ Component, pageProps }) {
     const { width } = useWindowSize();
 
     return (
         <PlayerProvider>
-            <div className={styles.wrapper}>
+            <Wrapper>
                 <main>
                     <Header />
                     {width < 1440 && <MinifiedPlayer />}
@@ -23,7 +23,8 @@ function MyApp({ Component, pageProps }) {
                 </main>
 
                 {width >= 1440 && <Player />}
-            </div>
+            </Wrapper>
+            <GlobalStyle />
         </PlayerProvider>
     );
 }

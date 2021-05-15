@@ -10,7 +10,8 @@ import IconPlay from '../../assets/icons/play.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
-import styles from './episode.module.scss';
+import { parseString } from '../../utils/parseString';
+import { Container } from '../components/Episodes';
 
 type IEpisode = {
     id: string;
@@ -32,37 +33,36 @@ export default function Episode({ episode }: TEpisodeProps) {
     const { play } = usePlayer();
 
     return (
-        <div className={styles.episode}>
+        <Container>
             <Head>
                 <title>{episode.title} | Podcastr</title>
             </Head>
 
-            <div className={styles.thumbnailContainer}>
-                <Link href="/">
-                    <button type="button">
-                        <IconArrowLeft />
+            <div>
+                <div className="thumbnailContainer">
+                    <Link href="/">
+                        <button type="button">
+                            <IconArrowLeft />
+                        </button>
+                    </Link>
+
+                    <Image width={1440} height={320} src={episode.thumbnail} objectFit="cover" />
+
+                    <button type="button" onClick={() => play(episode)}>
+                        <IconPlay />
                     </button>
-                </Link>
+                </div>
 
-                <Image width={700} height={160} src={episode.thumbnail} objectFit="cover" />
+                <header>
+                    <h1>{episode.title}</h1>
+                    <span>{episode.members}</span>
+                    <span>{episode.publishedAt}</span>
+                    <span>{episode.parsedDuration}</span>
+                </header>
 
-                <button type="button" onClick={() => play(episode)}>
-                    <IconPlay />
-                </button>
+                <p className="description">{episode.description}</p>
             </div>
-
-            <header>
-                <h1>{episode.title}</h1>
-                <span>{episode.members}</span>
-                <span>{episode.publishedAt}</span>
-                <span>{episode.parsedDuration}</span>
-            </header>
-
-            <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: episode.description }}
-            />
-        </div>
+        </Container>
     );
 }
 
@@ -87,7 +87,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }),
         duration: data.audio_length_sec,
         parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
-        description: data.description,
+        description: parseString(data.description),
         url: data.audio
     };
 

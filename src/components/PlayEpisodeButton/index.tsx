@@ -1,4 +1,4 @@
-import IconPlayGreen from '../../assets/icons/play-green.svg';
+import IconPlay from '../../assets/icons/play.svg';
 import { Container } from './styles';
 
 interface IPlayEpisodeButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,7 +8,7 @@ interface IPlayEpisodeButtonProps extends React.ButtonHTMLAttributes<HTMLButtonE
 export function PlayEpisodeButton({ small, type, ...rest }: IPlayEpisodeButtonProps) {
     return (
         <Container small={!!small} type={type || 'button'} {...rest}>
-            <IconPlayGreen />
+            <IconPlay />
         </Container>
     );
 }

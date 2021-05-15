@@ -9,7 +9,7 @@ import { usePlayer } from '../contexts/PlayerContext';
 import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 import { parseString } from '../utils/parseString';
-import styles from './home.module.scss';
+import { Container } from './components/Home';
 
 interface IEpisode {
     id: string;
@@ -38,12 +38,12 @@ export default function Home({ latestEpisodes, allEpisodes }: THomeProps) {
     const episodeList = [...latestEpisodes, ...allEpisodes];
 
     return (
-        <div className={styles.homepage}>
+        <Container>
             <Head>
                 <title>Home | Podcastr</title>
             </Head>
 
-            <section className={styles.latestEpisodes}>
+            <section className="latestEpisodes">
                 <h2>últimos lançamentos</h2>
 
                 <ul>
@@ -57,12 +57,12 @@ export default function Home({ latestEpisodes, allEpisodes }: THomeProps) {
                 </ul>
             </section>
 
-            <section className={styles.allEpisodes}>
+            <section className="allEpisodes">
                 <h2>Todos os episódios</h2>
 
                 <EpisodeTable episodeList={allEpisodes} allEpisodes={episodeList} />
             </section>
-        </div>
+        </Container>
     );
 }
 

@@ -1,10 +1,38 @@
-.episode {
-    max-width: 45rem;
+import styled from 'styled-components';
+
+export const Container = styled.div`
     padding: 3rem 2rem;
     margin: 0 auto;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    overflow-y: scroll;
+
+    display: flex;
+    justify-content: center;
+
+    > div {
+        max-width: 45rem;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    @media (max-width: 1439px) {
+        height: calc(100vh - 6.5rem - var(--minified-player-height) - var(--footer-height));
+    }
 
     .thumbnailContainer {
+        max-width: 100%;
+        width: 45rem;
+        height: 10rem;
+
         position: relative;
+
+        > div {
+            width: 100%;
+            height: 100%;
+        }
 
         img {
             border-radius: 1rem;
@@ -21,11 +49,16 @@
 
             transition: filter 0.2s;
 
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+
             &:first-child {
-               left: 0;
-               top: 50%;
-               background: var(--purple-500);
-               transform: translate(-50%, -50%);
+                left: 0;
+                top: 50%;
+                background: var(--purple-500);
+                transform: translate(-50%, -50%);
             }
 
             &:last-child {
@@ -33,12 +66,11 @@
                 top: 50%;
                 background: var(--green-500);
                 transform: translate(50%, -50%);
-             }
+            }
 
             &:hover {
-                filter: brightness(1.2); 
-             }
-
+                filter: brightness(1.2);
+            }
         }
     }
 
@@ -47,7 +79,7 @@
         border-bottom: 1px solid var(--gray-100);
 
         h1 {
-            margin-top: 1rem;
+            margin-top: 2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -61,11 +93,11 @@
                 position: relative;
 
                 &::before {
-                    content: "";
+                    content: '';
                     width: 4px;
                     height: 4px;
                     border-radius: 2px;
-                    background: #DDD;
+                    background: #ddd;
                     position: absolute;
                     left: 0;
                     top: 50%;
@@ -79,9 +111,10 @@
         margin-top: 2rem;
         line-height: 1.675rem;
         color: var(--gray-800);
+    }
 
-        p {
-            margin: 1.5rem 0;
+    @media (max-width: 768px) {
+        .thumbnailContainer button {
         }
     }
-}
+`;

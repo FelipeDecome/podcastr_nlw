@@ -18,6 +18,10 @@ export const Container = styled.button<IContainerProps>`
     svg {
         width: ${(props) => (props.small ? '1.25rem' : '1.5rem')};
         height: ${(props) => (props.small ? '1.25rem' : '1.5rem')};
+
+        path {
+            fill: var(--green-500);
+        }
     }
 
     &:hover {
