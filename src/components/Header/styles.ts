@@ -23,6 +23,7 @@ export const Container = styled.header`
 
     span {
         margin-left: auto;
+        margin-right: 1.5rem;
         text-transform: capitalize;
     }
 

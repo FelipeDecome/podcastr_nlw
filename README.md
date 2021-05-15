@@ -25,12 +25,12 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Remove members column in the Episodes table.
 -   [x] Remove members from players.
 -   [x] Implements a new Card design.
+-   [x] Implements dark mode.
 
 <hr/>
 
 #### _Ongoing_
 
--   [ ] Implements dark mode.
 -   [ ] Create a landing page.
 -   [ ] Save user progress on LocalStorage.
 

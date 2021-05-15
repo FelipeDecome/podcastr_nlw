@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.footer`
     padding: 0 4rem;
@@ -24,13 +24,26 @@ export const Container = styled.footer`
         color: var(--text-heading);
 
         &:hover {
-            span {
-                color: var(--primary-dark);
-            }
+            ${(props) =>
+                props.theme.title === 'light'
+                    ? css`
+                          span {
+                              color: var(--primary-dark);
+                          }
 
-            svg path {
-                fill: var(--primary-dark);
-            }
+                          svg path {
+                              fill: var(--primary-dark);
+                          }
+                      `
+                    : css`
+                          span {
+                              color: var(--secondary);
+                          }
+
+                          svg path {
+                              fill: var(--secondary);
+                          }
+                      `};
         }
 
         span {

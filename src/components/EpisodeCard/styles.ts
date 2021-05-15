@@ -15,7 +15,7 @@ export const Container = styled.li`
     border: 1px solid var(--items-complement);
     border-radius: 1.5rem;
 
-    transition: transform 0.2s;
+    transition: border-color 0.6s, background 0.6s, transform 0.2s;
 
     hr {
         border: 0;

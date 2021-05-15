@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { MinifiedPlayer } from '../components/MinifiedPlayer';
 import { Player } from '../components/Player';
-import { PlayerProvider } from '../contexts/PlayerContext';
+import { AppProvider } from '../contexts/AppContext';
 import useWindowSize from '../hooks/useWindowSize';
 import GlobalStyle from '../styles/globalStyle';
 import { Wrapper } from './components/App';
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
     const { width } = useWindowSize();
 
     return (
-        <PlayerProvider>
+        <AppProvider>
             <Wrapper>
                 <main>
                     <Header />
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
                 {width >= 1440 && <Player />}
             </Wrapper>
             <GlobalStyle />
-        </PlayerProvider>
+        </AppProvider>
     );
 }
 
