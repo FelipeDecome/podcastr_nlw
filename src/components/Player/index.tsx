@@ -49,9 +49,9 @@ export function Player() {
                                 max={episode?.duration}
                                 value={progress}
                                 onChange={handleSliderChange}
-                                trackStyle={{ backgroundColor: '#03D8E5' }}
-                                railStyle={{ backgroundColor: '#822B80' }}
-                                handleStyle={{ borderColor: '#03D8E5' }}
+                                trackStyle={{ backgroundColor: 'var(--secondary)' }}
+                                railStyle={{ backgroundColor: 'var(--primary-lighter)' }}
+                                handleStyle={{ borderColor: 'var(--secondary)' }}
                             />
                         ) : (
                             <div className="emptySlider" />

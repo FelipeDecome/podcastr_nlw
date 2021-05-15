@@ -29,7 +29,7 @@ export const Container = styled.div`
             }
 
             svg path {
-                stroke: var(--green-500);
+                stroke: var(--secondary);
             }
         }
 
@@ -38,10 +38,10 @@ export const Container = styled.div`
             height: 4rem;
 
             border-radius: 1rem;
-            background: var(--purple-400);
+            background: var(--primary-light);
 
             &.playing {
-                background: var(--purple-800);
+                background: var(--primary-dark);
             }
         }
     }

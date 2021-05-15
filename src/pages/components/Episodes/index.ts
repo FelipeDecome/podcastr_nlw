@@ -57,14 +57,14 @@ export const Container = styled.div`
             &:first-child {
                 left: 0;
                 top: 50%;
-                background: var(--purple-500);
+                background: var(--primary);
                 transform: translate(-50%, -50%);
             }
 
             &:last-child {
                 right: 0;
                 top: 50%;
-                background: var(--green-500);
+                background: var(--secondary);
                 transform: translate(50%, -50%);
             }
 
@@ -76,7 +76,7 @@ export const Container = styled.div`
 
     header {
         padding-bottom: 1rem;
-        border-bottom: 1px solid var(--gray-100);
+        border-bottom: 1px solid var(--items-complement);
 
         h1 {
             margin-top: 2rem;
@@ -97,7 +97,7 @@ export const Container = styled.div`
                     width: 4px;
                     height: 4px;
                     border-radius: 2px;
-                    background: #ddd;
+                    background: var(--items-complement);
                     position: absolute;
                     left: 0;
                     top: 50%;
@@ -109,12 +109,6 @@ export const Container = styled.div`
 
     .description {
         margin-top: 2rem;
-        line-height: 1.675rem;
-        color: var(--gray-800);
-    }
-
-    @media (max-width: 768px) {
-        .thumbnailContainer button {
-        }
+        text-align: justify;
     }
 `;

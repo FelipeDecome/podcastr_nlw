@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+
 * {
     margin: 0;
     padding: 0;
@@ -13,22 +14,22 @@ export default createGlobalStyle`
     --footer-height: 4.5rem;
     --side-padding: 4rem;
 
-    --white: #FFF;
+    --text-heading: #494D4B;
+    --text-default: #808080;
+    --text-complement: #AFB2B1;
+    --text-in-colors: #FFFFFF;
 
-    --gray-50: #F5F6FA;
-    --gray-100: #E6E8EB;
-    --gray-200: #AFB2B1;
-    --gray-500: #808080;
-    --gray-800: #494D4B;
-
-    --green-500: #03D8E5;
+    --items-background: #FFFFFF;
+    --items-complement: #E6E8EB;
     
-    --purple-300: #822B80;
-    --purple-400: #8F278C; 
-    --purple-500: #6B0B69;
-    --purple-800: #490047;
+    --background: #F5F6FA;
 
-    --purple-gradient: linear-gradient(143.8deg, rgba(143, 39, 140, 0.8) 0%, rgba(143, 39, 140, 0) 100%);
+    --primary-gradient: linear-gradient(143.8deg, rgba(143, 39, 140, 0.8) 0%, rgba(143, 39, 140, 0) 100%);
+    --primary-lighter: #822B80;
+    --primary-light: #8F278C; 
+    --primary: #6B0B69;
+    --primary-dark: #490047;
+    --secondary: #03D8E5;
 
     }
 
@@ -56,7 +57,7 @@ export default createGlobalStyle`
 }
 
 body {
-    background: var(--gray-50);
+    background: var(--background);
 }
 
 body, html {
@@ -68,13 +69,13 @@ body, html {
 
 body, input, textarea, button {
     font: 500 1rem Inter, sans-serif;
-    color: var(--gray-500);
+    color: var(--text-default);
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-family: Lexend, sans-serif;
-    color: var(--gray-800);
+    color: var(--text-heading);
 }
 
 h1 {

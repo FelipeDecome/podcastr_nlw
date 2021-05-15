@@ -5,8 +5,8 @@ export const Container = styled.aside`
     width: 26.5rem;
     height: 100vh;
 
-    background: var(--purple-500);
-    color: var(--white);
+    background: var(--primary);
+    color: var(--text-in-colors);
 
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ export const Container = styled.aside`
     text-align: center;
 
     > div {
-        border: 2px solid var(--purple-400);
+        border: 2px solid var(--primary-light);
         border-radius: 1.5rem;
     }
 
@@ -59,9 +59,9 @@ export const Container = styled.aside`
     align-items: center;
     text-align: center;
 
-    border: 1.5px dashed var(--purple-300);
+    border: 1.5px dashed var(--primary-lighter);
     border-radius: 1.5rem;
-    background: var(--purple-gradient);
+    background: var(--primary-gradient);
 }
 
 .progress {
@@ -70,7 +70,6 @@ export const Container = styled.aside`
     display: flex;
     align-items: center;
     gap: 1rem;
-    
 
     span {
         display: inline-block;
@@ -83,60 +82,8 @@ export const Container = styled.aside`
         .emptySlider {
            width: 100%; 
            height: 4px;
-           background: var(--purple-300);
+           background: var(--primary-lighter);
            border-radius: 2px;
         }
-    }
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-
-    button {
-        background: transparent;
-        border: 0;
-        font-size: 0;
-
-        transition: filter 0.2s;
-
-        
-        &:disabled {
-            cursor: not-allowed;
-            opacity: 0.2;
-        }
-        
-        &:hover:not(:disabled) {
-            filter: brightness(0.7);
-        } 
-        
-        &.active {
-            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
-        }
-
-        &.active:hover {
-            filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
-        }
-
-        &.playButton {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 1rem;
-            background: var(--purple-400);
-            
-            transition: filter 0.2s, background 0.2s;
-
-            &:hover {
-                filter: brightness(0.97);
-            }
-
-            &.playing {
-                background: var(--purple-800);
-            }
-        }
-
     }
 `;

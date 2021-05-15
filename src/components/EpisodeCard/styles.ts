@@ -11,15 +11,15 @@ export const Container = styled.li`
     flex-direction: column;
     gap: 1rem;
 
-    background: var(--white);
-    border: 1px solid var(--gray-100);
+    background: var(--items-background);
+    border: 1px solid var(--items-complement);
     border-radius: 1.5rem;
 
     transition: transform 0.2s;
 
     hr {
         border: 0;
-        border-top: 1px solid var(--gray-100);
+        border-top: 1px solid var(--items-complement);
         margin-bottom: 1rem;
     }
 
@@ -65,7 +65,7 @@ export const Content = styled.div`
     gap: 1rem;
 
     a {
-        color: var(--gray-800);
+        color: var(--text-heading);
         text-decoration: none;
 
         &:hover {
@@ -77,6 +77,7 @@ export const Content = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
+        line-height: 1.5rem;
         max-height: 6rem;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
@@ -116,7 +117,7 @@ export const Footer = styled.footer`
                 width: 4px;
                 height: 4px;
                 border-radius: 2px;
-                background: #ddd;
+                background: var(--items-complement);
                 position: absolute;
                 left: 0;
                 top: 50%;

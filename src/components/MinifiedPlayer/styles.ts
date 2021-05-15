@@ -9,7 +9,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 2rem;
 
-    background: var(--purple-500);
+    background: var(--primary);
 
     .emptyPlayer,
     > div:first-child {
@@ -19,7 +19,7 @@ export const Container = styled.div`
     }
 
     > div:first-child:not(.emptyPlayer) {
-        border: 2px solid var(--purple-400);
+        border: 2px solid var(--primary-light);
         border-radius: 1.5rem;
     }
 
@@ -31,8 +31,8 @@ export const Container = styled.div`
             width: 100%;
             height: 100%;
 
-            background: var(--purple-gradient);
-            border: 1px dashed var(--purple-300);
+            background: var(--primary-gradient);
+            border: 1px dashed var(--primary-lighter);
             border-radius: 1.5rem;
         }
     }
@@ -48,7 +48,7 @@ export const Container = styled.div`
         strong {
             font-family: Lexend, sans-serif;
             font-weight: 600;
-            color: var(--white);
+            color: var(--text-in-colors);
 
             max-width: 100%;
             white-space: nowrap;
@@ -78,7 +78,7 @@ export const Container = styled.div`
                 span {
                     font-size: 0.875rem;
                     font-weight: 400;
-                    color: var(--white);
+                    color: var(--text-in-colors);
                 }
 
                 .slider {
@@ -87,7 +87,7 @@ export const Container = styled.div`
                     .emptySlider {
                         height: 4px;
                         border-radius: 2px;
-                        background: var(--purple-300);
+                        background: var(--primary-lighter);
                     }
                 }
             }

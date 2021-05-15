@@ -6,7 +6,7 @@ export const Container = styled.table`
     th,
     td {
         padding: 0.75rem 1rem;
-        border-bottom: 1px solid var(--gray-100);
+        border-bottom: 1px solid var(--items-complement);
 
         &:first-child {
             width: 4.5rem;
@@ -19,7 +19,7 @@ export const Container = styled.table`
     }
 
     th {
-        color: var(--gray-200);
+        color: var(--text-complement);
         text-transform: uppercase;
         font: 500 0.75rem Lexend, sans-serif;
         text-align: left;
@@ -35,7 +35,7 @@ export const Container = styled.table`
         }
 
         a {
-            color: var(--gray-800);
+            color: var(--text-heading);
             font-family: Lexend, sans-serif;
             font-weight: 600;
             text-decoration: none;

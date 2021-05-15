@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-    background: var(--white);
+    background: var(--items-background);
     height: var(--header-height);
 
     display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.header`
 
     padding: 2rem 4rem;
 
-    border-bottom: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--items-complement);
 
     a {
         font-size: 0;
@@ -18,7 +18,7 @@ export const Container = styled.header`
     p {
         margin-left: 2rem;
         padding: 0.25rem 0 0.25rem 2rem;
-        border-left: 1px solid var(--gray-100);
+        border-left: 1px solid var(--items-complement);
     }
 
     span {

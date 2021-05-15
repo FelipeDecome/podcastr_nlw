@@ -8,8 +8,8 @@ export const Container = styled.footer`
     align-items: center;
     justify-content: space-between;
 
-    background: var(--white);
-    border-top: 1px solid var(--gray-100);
+    background: var(--items-background);
+    border-top: 1px solid var(--items-complement);
 
     a {
         text-decoration: none;
@@ -21,15 +21,15 @@ export const Container = styled.footer`
 
         font-family: Lexend, sans-serif;
         font-weight: 600;
-        color: var(--gray-800);
+        color: var(--text-heading);
 
         &:hover {
             span {
-                color: var(--purple-800);
+                color: var(--primary-dark);
             }
 
             svg path {
-                fill: var(--purple-800);
+                fill: var(--primary-dark);
             }
         }
 

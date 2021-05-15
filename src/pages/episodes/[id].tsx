@@ -9,6 +9,7 @@ import IconArrowLeft from '../../assets/icons/arrow-left.svg';
 import IconPlay from '../../assets/icons/play.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
+import { Paragraph } from '../../styles/components/Text';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { parseString } from '../../utils/parseString';
 import { Container } from '../components/Episodes';
@@ -60,7 +61,7 @@ export default function Episode({ episode }: TEpisodeProps) {
                     <span>{episode.parsedDuration}</span>
                 </header>
 
-                <p className="description">{episode.description}</p>
+                <Paragraph className="description">{episode.description}</Paragraph>
             </div>
         </Container>
     );
