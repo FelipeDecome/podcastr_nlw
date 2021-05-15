@@ -13,7 +13,7 @@ export const Container = styled.button<IContainerProps>`
     border-radius: ${(props) => (props.small ? '0.5rem' : '0.625rem')};
     font-size: 0;
 
-    transition: background 0.6s, border-color 0.6s, filter 0.2s;
+    transition: filter 0.2s;
 
     svg {
         width: ${(props) => (props.small ? '1.25rem' : '1.5rem')};

@@ -6,9 +6,6 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    transition-property: background, color, fill, stroke, border-color;
-    transition-duration: 0.6s;
 }
 
 :root {
