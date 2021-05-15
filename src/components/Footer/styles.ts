@@ -1,4 +1,6 @@
-.footerContainer {
+import styled from 'styled-components';
+
+export const Container = styled.footer`
     padding: 0 4rem;
     height: var(--footer-height);
 
@@ -48,24 +50,18 @@
         height: 1.25rem;
         object-fit: cover;
     }
-}
 
-@media (max-width: 559px) {
-    .footerContainer {
+    @media (max-width: 559px) {
         flex-direction: column;
         justify-content: center;
         gap: 0.5rem;
     }
-}
 
-@media (max-width: 767px) {
-    .footerContainer {
+    @media (max-width: 767px) {
         padding: 0 1.5rem;
     }
-}
 
-@media (max-width: 992px) {
-    .footerContainer {
+    @media (max-width: 992px) {
         padding: 0 2rem;
     }
-}
+`;

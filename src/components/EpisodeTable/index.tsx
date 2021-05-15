@@ -4,7 +4,7 @@ import Link from 'next/link';
 import IconPlayGreen from '../../assets/icons/play-green.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { PlayEpisodeButton } from '../PlayEpisodeButton';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 type TEpisode = {
     id: string;
@@ -26,13 +26,13 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
     const { playEpisodeList } = usePlayer();
 
     return (
-        <table className={styles.table} cellSpacing={0}>
+        <Container cellSpacing={0}>
             <thead>
                 <tr>
                     <th></th>
                     <th>Podcast</th>
-                    <th>Data</th>
-                    <th className={styles.hiddenOn_SM}>Duração</th>
+                    <th className="hiddenOn_XS_SM">Data</th>
+                    <th className="hiddenOn_SM">Duração</th>
                     <th></th>
                 </tr>
             </thead>
@@ -43,10 +43,7 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
 
                     return (
                         <tr key={episode.id}>
-                            <td
-                                style={{
-                                    width: 72
-                                }}>
+                            <td>
                                 <Image
                                     width={120}
                                     height={120}
@@ -62,14 +59,8 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                                 </Link>
                             </td>
 
-                            <td
-                                className={styles.hiddenOn_XS_SM}
-                                style={{
-                                    width: 100
-                                }}>
-                                {episode.publishedAt}
-                            </td>
-                            <td className={styles.hiddenOn_SM}>{episode.parsedDuration}</td>
+                            <td className="hiddenOn_XS_SM">{episode.publishedAt}</td>
+                            <td className="hiddenOn_SM">{episode.parsedDuration}</td>
                             <td>
                                 <PlayEpisodeButton
                                     small
@@ -82,6 +73,6 @@ export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
                     );
                 })}
             </tbody>
-        </table>
+        </Container>
     );
 }

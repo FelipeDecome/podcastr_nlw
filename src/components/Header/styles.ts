@@ -1,4 +1,6 @@
-.headerContainer {
+import styled from 'styled-components';
+
+export const Container = styled.header`
     background: var(--white);
     height: var(--header-height);
 
@@ -23,10 +25,10 @@
         margin-left: auto;
         text-transform: capitalize;
     }
-}
 
-@media (max-width: 767px) {
-    .headerContainer p {
-        display: none;
+    @media (max-width: 767px) {
+        p {
+            display: none;
+        }
     }
-}
+`;

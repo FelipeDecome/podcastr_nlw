@@ -8,13 +8,13 @@ import IconPlaying from '../../assets/icons/playing.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { PlayerControls } from '../PlayerControls';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 export function Player() {
     const { episode, progress, handleSliderChange } = usePlayer();
 
     return (
-        <div className={styles.playerContainer}>
+        <Container className="playerContainer">
             {episode ? (
                 <>
                     <header>
@@ -22,7 +22,7 @@ export function Player() {
                         <strong>Tocando agora</strong>
                     </header>
 
-                    <div className={styles.currentEpisode}>
+                    <div className="currentEpisode">
                         <Image width={592} height={592} src={episode.thumbnail} objectFit="cover" />
                         <strong>{episode.title}</strong>
                     </div>
@@ -34,16 +34,16 @@ export function Player() {
                         <strong>Nada tocando</strong>
                     </header>
 
-                    <div className={styles.emptyPlayer}>
+                    <div className="emptyPlayer">
                         <strong>Selecione um podcast para ouvir</strong>
                     </div>
                 </>
             )}
 
-            <footer className={!episode ? styles.empty : ''}>
-                <div className={styles.progress}>
+            <footer className={!episode ? 'empty' : ''}>
+                <div className="progress">
                     <span>{convertDurationToTimeString(progress)}</span>
-                    <div className={styles.slider}>
+                    <div className="slider">
                         {episode ? (
                             <Slider
                                 max={episode?.duration}
@@ -54,7 +54,7 @@ export function Player() {
                                 handleStyle={{ borderColor: '#03D8E5' }}
                             />
                         ) : (
-                            <div className={styles.emptySlider} />
+                            <div className="emptySlider" />
                         )}
                     </div>
                     <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
@@ -62,6 +62,6 @@ export function Player() {
 
                 <PlayerControls hasEpisode={!!episode} />
             </footer>
-        </div>
+        </Container>
     );
 }

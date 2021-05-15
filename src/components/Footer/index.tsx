@@ -1,9 +1,9 @@
 import IconGithub from '../../assets/icons/github.svg';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 export function Footer() {
     return (
-        <div className={styles.footerContainer}>
+        <Container>
             <a href="https://www.github.com/felipedecome" target="_blank" rel="noreferrer">
                 <IconGithub />
                 Desenvolvido por
@@ -11,12 +11,12 @@ export function Footer() {
             </a>
 
             <a
-                className={styles.listenNotesCredit}
+                className="listenNotesCredit"
                 href="https://www.listennotes.com/"
                 target="_blank"
                 rel="noreferrer">
                 <img src="/listen-notes-credits.png" alt="Listen Notes" />
             </a>
-        </div>
+        </Container>
     );
 }

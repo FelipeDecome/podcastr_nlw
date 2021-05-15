@@ -3,7 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
 
 import Logo from '../../assets/icons/logo.svg';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 export function Header() {
     const currentDate = format(new Date(), 'EEEEEE, d MMMM', {
@@ -11,7 +11,7 @@ export function Header() {
     });
 
     return (
-        <header className={styles.headerContainer}>
+        <Container>
             <Link href="/">
                 <a>
                     <Logo />
@@ -20,6 +20,6 @@ export function Header() {
             <p>O melhor para você ouvir, sempre</p>
 
             <span>{currentDate}</span>
-        </header>
+        </Container>
     );
 }

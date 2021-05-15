@@ -6,13 +6,13 @@ import Slider from 'rc-slider';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { PlayerControls } from '../PlayerControls';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 export function MinifiedPlayer() {
     const { progress, episode, handleSliderChange } = usePlayer();
 
     return (
-        <div className={styles.container}>
+        <Container>
             {episode ? (
                 <Image
                     width={488}
@@ -20,26 +20,26 @@ export function MinifiedPlayer() {
                     src={episode.thumbnail}
                     alt={episode.title}
                     objectFit="cover"
-                    className={styles.episodeImage}
+                    className="episodeImage"
                 />
             ) : (
-                <div className={styles.emptyPlayer}></div>
+                <div className="emptyPlayer"></div>
             )}
 
-            <div className={styles.playerContent}>
+            <div className="playerContent">
                 {episode ? (
                     <strong title={episode.title}>{episode.title}</strong>
                 ) : (
                     <strong>Selecione um podcast para ouvir</strong>
                 )}
                 <div>
-                    <div className={styles.controls}>
+                    <div className="controls">
                         <PlayerControls hasEpisode={!!episode} isMinified />
                     </div>
 
-                    <div className={[styles.progress, !episode && styles.empty].join(' ')}>
+                    <div className={['progress', !episode && 'empty'].join(' ')}>
                         <span>{convertDurationToTimeString(progress)}</span>
-                        <div className={styles.slider}>
+                        <div className="slider">
                             {episode ? (
                                 <Slider
                                     max={episode?.duration}
@@ -50,13 +50,13 @@ export function MinifiedPlayer() {
                                     handleStyle={{ borderColor: '#03D8E5' }}
                                 />
                             ) : (
-                                <div className={styles.emptySlider} />
+                                <div className="emptySlider" />
                             )}
                         </div>
                         <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 }

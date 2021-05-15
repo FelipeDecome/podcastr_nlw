@@ -1,14 +1,16 @@
-.container {
+import styled from 'styled-components';
+
+export const Container = styled.div`
     --top-padding: 0.5rem;
     padding: var(--top-padding) var(--side-padding);
-    height: var(--minified-player-height); 
+    height: var(--minified-player-height);
 
     display: flex;
     align-items: center;
     gap: 2rem;
-    
+
     background: var(--purple-500);
-    
+
     .emptyPlayer,
     > div:first-child {
         height: calc(var(--minified-player-height) - 1rem);
@@ -20,10 +22,10 @@
         border: 2px solid var(--purple-400);
         border-radius: 1.5rem;
     }
-    
-    .emptyPlayer {    
+
+    .emptyPlayer {
         display: flex;
-            
+
         &::after {
             content: '';
             width: 100%;
@@ -36,7 +38,7 @@
     }
 
     .playerContent {
-        min-width: 0; /* Fix flex breaking on white-space: norap; */
+        min-width: 0; /* Fix flex breaking on white-space: nowrap; */
 
         flex: 1;
         display: flex;
@@ -46,19 +48,19 @@
         strong {
             font-family: Lexend, sans-serif;
             font-weight: 600;
-            color: var(--white);                
-        
+            color: var(--white);
+
             max-width: 100%;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
         }
-    
+
         > div:not(:first-child) {
             display: flex;
             align-items: center;
             gap: 1.25rem;
-                
+
             .controls div {
                 margin-top: 0;
             }
@@ -91,23 +93,18 @@
             }
         }
     }
-}
 
-@media (max-width: 767px) {
-    .container {
+    @media (max-width: 767px) {
         --top-padding: 0;
 
         .emptyPlayer,
-        > div:first-child { /* Esconde a imagem */
-            display: none!important;
+        > div:first-child {
+            /* Esconde a imagem */
+            display: none !important;
         }
 
         .playerContent {
             width: 100%;
         }
     }
-}
-
-@media (max-width: 480px) {
-
-}
+`;

@@ -1,5 +1,7 @@
-.playerContainer {
-    padding: 2.25rem 4rem 3rem;
+import styled from 'styled-components';
+
+export const Container = styled.aside`
+  padding: 2.25rem 4rem 3rem;
     width: 26.5rem;
     height: 100vh;
 
@@ -137,4 +139,4 @@
         }
 
     }
-}
+`;

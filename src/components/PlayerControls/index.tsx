@@ -5,7 +5,7 @@ import IconPlayPrevious from '../../assets/icons/play-previous.svg';
 import IconRepeat from '../../assets/icons/repeat.svg';
 import IconShuffle from '../../assets/icons/shuffle.svg';
 import { usePlayer } from '../../contexts/PlayerContext';
-import styles from './styles.module.scss';
+import { Container } from './styles';
 
 type TPlayerControlsProps = {
     hasEpisode: boolean;
@@ -28,12 +28,12 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
     } = usePlayer();
 
     return (
-        <div className={[styles.buttonsContainer, isMinified ? styles.minified : ''].join(' ')}>
+        <Container className={isMinified ? 'minified' : ''}>
             <button
                 type="button"
                 disabled={!hasEpisode || episodeList.length === 1}
                 onClick={toggleShuffle}
-                className={shuffling ? styles.active : ''}>
+                className={shuffling ? 'active' : ''}>
                 <IconShuffle />
             </button>
 
@@ -44,7 +44,7 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
             <button
                 type="button"
                 disabled={!hasEpisode}
-                className={[styles.playButton, isPlaying ? styles.playing : ''].join(' ')}
+                className={['playButton', isPlaying ? 'playing' : ''].join(' ')}
                 onClick={togglePlay}>
                 {isPlaying ? <IconPause /> : <IconPlay />}
             </button>
@@ -57,9 +57,9 @@ export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps)
                 type="button"
                 disabled={!hasEpisode}
                 onClick={toggleLoop}
-                className={looping ? styles.active : ''}>
+                className={looping ? 'active' : ''}>
                 <IconRepeat />
             </button>
-        </div>
+        </Container>
     );
 }
