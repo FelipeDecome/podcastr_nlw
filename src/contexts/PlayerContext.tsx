@@ -1,6 +1,9 @@
 import { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
 
+import { localStorageConfig } from '../config/localStorage';
+
 type TEpisode = {
+    id: string;
     title: string;
     members: string;
     thumbnail: string;
@@ -99,8 +102,6 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
     }
 
     function setupProgressListener() {
-        audioRef.current.currentTime = 0;
-
         audioRef.current.addEventListener('timeupdate', () =>
             setProgress(audioRef.current.currentTime)
         );
@@ -127,6 +128,29 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
 
         audioRef.current[action]();
     }, [isPlaying]);
+
+    useEffect(() => {
+        const episode = episodeList[currentEpisodeIndex];
+
+        if (episode && Math.floor(progress) % 10 === 0) {
+            const key = `${localStorageConfig.prefix}:episode-${episode.id}`;
+            const value = progress;
+
+            localStorage.setItem(key, JSON.stringify(value));
+        }
+    }, [progress]);
+
+    useEffect(() => {
+        const episode = episodeList[currentEpisodeIndex];
+
+        if (episode) {
+            const key = `${localStorageConfig.prefix}:episode-${episode.id}`;
+            const savedProgress = Number(JSON.parse(localStorage.getItem(key)));
+
+            setProgress(savedProgress || 0);
+            audioRef.current.currentTime = savedProgress || 0;
+        }
+    }, [episodeList, currentEpisodeIndex]);
 
     return (
         <PlayerContext.Provider

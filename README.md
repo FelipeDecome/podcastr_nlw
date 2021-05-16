@@ -16,29 +16,31 @@ The project goal was to build a web platform to listen to podcasts.
 
 -   [x] Make it responsive.
 -   [x] Integrate with an api to find episodes.
--   [x] Create components to improve code readability and understanding.
 -   [x] Episode Cards Component.
 -   [x] Episodes Table Component.
--   [x] Finalize minified player styles and make it responsible as well.
--   [x] Minified Player for smaller screens.
 -   [x] Create a new color scheme.
--   [x] Remove members column in the Episodes table.
--   [x] Remove members from players.
 -   [x] Implements a new Card design.
 -   [x] Implements dark mode.
+-   [x] Save user progress on LocalStorage.
 
 <hr/>
 
 #### _Ongoing_
 
 -   [ ] Create a landing page.
--   [ ] Save user progress on LocalStorage.
+-   [ ] Improve UI/UX.
 
 ## Chores
 
 #### _Done_
 
 -   [x] Add Eslint/Prettier configurations.
+-   [x] Add Styled Components.
+-   [x] Create components to improve code readability and understanding.
+-   [x] Finalize minified player styles and make it responsible as well.
+-   [x] Minified Player for smaller screens.
+-   [x] Remove members column in the Episodes table.
+-   [x] Remove members from players.
 -   [x] Content max-width 1440px.
 -   [x] Fix Last Releases container allignment.
 -   [x] Fix paddings on small resolutions. (Optional)
@@ -47,13 +49,7 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Player Controls loop/suffle for XS resolutions.
 -   [x] Improve icons usage.
 -   [x] Button fix hover opacity.
--   [x] Add Styled Components.
-
-<hr/>
-
-#### _Ongoing_
-
--   [ ] Improve UI/UX.
+-   [x] Mobile Header reduce padding
 
 <br>
 
