@@ -27,6 +27,17 @@ export const Container = styled.header`
         text-transform: capitalize;
     }
 
+    .themeSwitchContainer {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        .active path {
+            fill: var(--secondary);
+            stroke: var(--secondary);
+        }
+    }
+
     @media (max-width: 767px) {
         padding: 0 2rem;
 
