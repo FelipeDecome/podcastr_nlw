@@ -27,7 +27,12 @@ The project goal was to build a web platform to listen to podcasts.
 
 #### _Ongoing_
 
+-   [ ] Add conventional commits.
 -   [ ] Create a landing page.
+-   [ ] Implements a Search to find podcasts and episodes.
+-   [ ] Add a Podcast series page.
+-   [ ] Add comments to episodes.
+-   [ ] Add ratings to episodes.
 -   [ ] Improve UI/UX.
 
 ## Chores
@@ -50,6 +55,9 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Improve icons usage.
 -   [x] Button fix hover opacity.
 -   [x] Mobile Header reduce padding
+-   [x] Upgrade NextJS to @12.
+-   [x] Upgrade packages.
+-   [x] Update Colors.
 
 <br>
 
