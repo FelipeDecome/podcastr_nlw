@@ -7,72 +7,73 @@ import { PlayEpisodeButton } from '../PlayEpisodeButton';
 import { Container } from './styles';
 
 type TEpisode = {
-    id: string;
-    title: string;
-    members: string;
-    publishedAt: string;
-    thumbnail: string;
-    duration: number;
-    parsedDuration: string;
-    url: string;
+  id: string;
+  title: string;
+  members: string;
+  publishedAt: string;
+  thumbnail: string;
+  duration: number;
+  parsedDuration: string;
+  url: string;
 };
 
 type TEpisodeTableProps = {
-    episodeList: TEpisode[];
-    allEpisodes: TEpisode[];
+  episodeList: TEpisode[];
+  allEpisodes: TEpisode[];
 };
 
 export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
-    const { playEpisodeList } = usePlayer();
+  const { playEpisodeList } = usePlayer();
 
-    return (
-        <Container cellSpacing={0}>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Podcast</th>
-                    <th className="hiddenOn_XS_SM">Data</th>
-                    <th className="hiddenOn_SM">Duração</th>
-                    <th></th>
-                </tr>
-            </thead>
+  return (
+    <Container cellSpacing={0}>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Podcast</th>
+          <th className="hiddenOn_XS_SM">Data</th>
+          <th className="hiddenOn_SM">Duração</th>
+          <th></th>
+        </tr>
+      </thead>
 
-            <tbody>
-                {episodeList.map((episode, index, array) => {
-                    const episodeIndex = index + (allEpisodes.length - array.length);
+      <tbody>
+        {episodeList.map((episode, index, array) => {
+          const episodeIndex = index + (allEpisodes.length - array.length);
 
-                    return (
-                        <tr key={episode.id}>
-                            <td>
-                                <Image
-                                    width={120}
-                                    height={120}
-                                    src={episode.thumbnail}
-                                    alt={episode.title}
-                                    objectFit="cover"
-                                />
-                            </td>
+          return (
+            <tr key={episode.id}>
+              <td>
+                <Image
+                  width={120}
+                  height={120}
+                  src={episode.thumbnail}
+                  alt={episode.title}
+                  objectFit="cover"
+                />
+              </td>
 
-                            <td>
-                                <Link href={`/episodes/${episode.id}`}>
-                                    <a>{episode.title}</a>
-                                </Link>
-                            </td>
+              <td>
+                <Link href={`/episodes/${episode.id}`}>
+                  <a>{episode.title}</a>
+                </Link>
+              </td>
 
-                            <td className="hiddenOn_XS_SM">{episode.publishedAt}</td>
-                            <td className="hiddenOn_SM">{episode.parsedDuration}</td>
-                            <td>
-                                <PlayEpisodeButton
-                                    small
-                                    type="button"
-                                    onClick={() => playEpisodeList(allEpisodes, episodeIndex)}>
-                                    <IconPlayGreen />
-                                </PlayEpisodeButton>
-                            </td>
-                        </tr>
-                    );
-                })}
-            </tbody>
-        </Container>
-    );
+              <td className="hiddenOn_XS_SM">{episode.publishedAt}</td>
+              <td className="hiddenOn_SM">{episode.parsedDuration}</td>
+              <td>
+                <PlayEpisodeButton
+                  small
+                  type="button"
+                  onClick={() => playEpisodeList(allEpisodes, episodeIndex)}
+                >
+                  <IconPlayGreen />
+                </PlayEpisodeButton>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Container>
+  );
 }

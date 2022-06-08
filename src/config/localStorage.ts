@@ -1,5 +1,5 @@
 const localStorageConfig = {
-    prefix: '@PodcastrApp'
+  prefix: '@PodcastrApp',
 };
 
 export { localStorageConfig };

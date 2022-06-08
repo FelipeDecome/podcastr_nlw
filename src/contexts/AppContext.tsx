@@ -5,31 +5,31 @@ import { dark, light } from '../styles/themes';
 import { PlayerProvider } from './PlayerContext';
 
 const themes = {
-    light,
-    dark
+  light,
+  dark,
 };
 
 interface IAppContextProps {
-    theme: string;
-    toggleTheme: () => void;
+  theme: string;
+  toggleTheme: () => void;
 }
 
 const AppContext = createContext({} as IAppContextProps);
 
 export function AppProvider({ children }) {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-    const toggleTheme = () => {
-        setTheme((state) => (state !== 'light' ? 'light' : 'dark'));
-    };
+  const toggleTheme = () => {
+    setTheme(state => (state !== 'light' ? 'light' : 'dark'));
+  };
 
-    return (
-        <AppContext.Provider value={{ theme, toggleTheme }}>
-            <ThemeProvider theme={themes[theme]}>
-                <PlayerProvider>{children}</PlayerProvider>
-            </ThemeProvider>
-        </AppContext.Provider>
-    );
+  return (
+    <AppContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeProvider theme={themes[theme]}>
+        <PlayerProvider>{children}</PlayerProvider>
+      </ThemeProvider>
+    </AppContext.Provider>
+  );
 }
 
 export const useApp = () => useContext(AppContext);

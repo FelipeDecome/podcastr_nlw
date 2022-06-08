@@ -14,31 +14,31 @@ export default createGlobalStyle`
     --footer-height: 4.5rem;
     --side-padding: 4rem;
 
-    ${(props) => {
-        const { background, item, text, primary, secondary } = props.theme;
+    ${props => {
+      const { background, item, text, primary, secondary } = props.theme;
 
-        return css`
-            --text-heading: ${text.heading};
-            --text-default: ${text.default};
-            --text-complement: ${text.complement}1;
-            --text-in-colors: ${text.inColors};
+      return css`
+        --text-heading: ${text.heading};
+        --text-default: ${text.default};
+        --text-complement: ${text.complement};
+        --text-in-colors: ${text.inColors};
 
-            --items-background: ${item.background};
-            --items-complement: ${item.complement};
+        --items-background: ${item.background};
+        --items-complement: ${item.complement};
 
-            --background: ${background};
+        --background: ${background};
 
-            --primary-gradient: linear-gradient(
-                143.8deg,
-                rgba(143, 39, 140, 0.8) 0%,
-                rgba(143, 39, 140, 0) 100%
-            );
-            --primary-lighter: ${primary.lighter};
-            --primary-light: ${primary.light};
-            --primary: ${primary.default};
-            --primary-dark: ${primary.dark};
-            --secondary: ${secondary};
-        `;
+        --primary-gradient: linear-gradient(
+          143.8deg,
+          rgba(76, 29, 149, 0.8) 0%,
+          rgba(139, 92, 246, 0.8) 100%
+        );
+        --primary-lighter: ${primary.lighter};
+        --primary-light: ${primary.light};
+        --primary: ${primary.default};
+        --primary-dark: ${primary.dark};
+        --secondary: ${secondary};
+      `;
     }}
 }
 

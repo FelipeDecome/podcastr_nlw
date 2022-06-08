@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ParsedUrlQuery } from 'querystring';
 
 import IconArrowLeft from '../../assets/icons/arrow-left.svg';
 import IconPlay from '../../assets/icons/play.svg';
@@ -15,87 +16,100 @@ import { convertDurationToTimeString } from '../../utils/convertDurationToTimeSt
 import { parseString } from '../../utils/parseString';
 
 type IEpisode = {
-    id: string;
-    title: string;
-    members: string;
-    publishedAt: string;
-    thumbnail: string;
-    duration: number;
-    parsedDuration: string;
-    description: string;
-    url: string;
+  id: string;
+  title: string;
+  members: string;
+  publishedAt: string;
+  thumbnail: string;
+  duration: number;
+  parsedDuration: string;
+  description: string;
+  url: string;
 };
 
 type TEpisodeProps = {
-    episode: IEpisode;
+  episode: IEpisode;
 };
 
 export default function Episode({ episode }: TEpisodeProps) {
-    const { play } = usePlayer();
+  const { play } = usePlayer();
 
-    return (
-        <Container>
-            <Head>
-                <title>{episode.title} | Podcastr</title>
-            </Head>
+  return (
+    <Container>
+      <Head>
+        <title>{episode.title} | Podcastr</title>
+      </Head>
 
-            <div>
-                <div className="thumbnailContainer">
-                    <Link href="/">
-                        <button type="button">
-                            <IconArrowLeft />
-                        </button>
-                    </Link>
+      <div>
+        <div className="thumbnailContainer">
+          <Link href="/">
+            <button type="button">
+              <IconArrowLeft />
+            </button>
+          </Link>
 
-                    <Image width={1440} height={320} src={episode.thumbnail} objectFit="cover" />
+          <Image
+            width={1440}
+            height={320}
+            src={episode.thumbnail}
+            alt={episode.title}
+            objectFit="cover"
+          />
 
-                    <button type="button" onClick={() => play(episode)}>
-                        <IconPlay />
-                    </button>
-                </div>
+          <button type="button" onClick={() => play(episode)}>
+            <IconPlay />
+          </button>
+        </div>
 
-                <header>
-                    <h1>{episode.title}</h1>
-                    <span>{episode.members}</span>
-                    <span>{episode.publishedAt}</span>
-                    <span>{episode.parsedDuration}</span>
-                </header>
+        <header>
+          <h1>{episode.title}</h1>
+          <span>{episode.members}</span>
+          <span>{episode.publishedAt}</span>
+          <span>{episode.parsedDuration}</span>
+        </header>
 
-                <Paragraph className="description">{episode.description}</Paragraph>
-            </div>
-        </Container>
-    );
+        <Paragraph className="description">{episode.description}</Paragraph>
+      </div>
+    </Container>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [],
-        fallback: 'blocking'
-    };
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-    const { id } = context.params;
-    const { data } = await api(`/episodes/${id}`);
+interface IParams extends ParsedUrlQuery {
+  id: string;
+}
 
-    const episode = {
-        id: data.id,
-        title: data.title,
-        thumbnail: data.thumbnail,
-        members: 'Juquinha, Aninha e Trevor',
-        publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', {
-            locale: ptBR
-        }),
-        duration: data.audio_length_sec,
-        parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
-        description: parseString(data.description),
-        url: data.audio
-    };
+export const getStaticProps: GetStaticProps<
+  TEpisodeProps,
+  IParams
+> = async context => {
+  const { id } = context.params!;
+  const { data } = await api(`/episodes/${id}`);
 
-    return {
-        props: {
-            episode
-        },
-        revalidate: 60 * 60 * 24
-    };
+  const episode = {
+    id: data.id,
+    title: data.title,
+    thumbnail: data.thumbnail,
+    members: 'Juquinha, Aninha e Trevor',
+    publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', {
+      locale: ptBR,
+    }),
+    duration: data.audio_length_sec,
+    parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
+    description: parseString(data.description),
+    url: data.audio,
+  };
+
+  return {
+    props: {
+      episode,
+    },
+    revalidate: 60 * 60 * 24,
+  };
 };

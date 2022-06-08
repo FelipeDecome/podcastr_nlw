@@ -8,58 +8,72 @@ import { usePlayer } from '../../contexts/PlayerContext';
 import { Container } from './styles';
 
 type TPlayerControlsProps = {
-    hasEpisode: boolean;
-    isMinified?: boolean;
+  hasEpisode: boolean;
+  isMinified?: boolean;
 };
 
-export function PlayerControls({ hasEpisode, isMinified }: TPlayerControlsProps) {
-    const {
-        hasNext,
-        hasPrevious,
-        isPlaying,
-        looping,
-        shuffling,
-        episodeList,
-        togglePlay,
-        toggleLoop,
-        toggleShuffle,
-        playNext,
-        playPrevious
-    } = usePlayer();
+export function PlayerControls({
+  hasEpisode,
+  isMinified,
+}: TPlayerControlsProps) {
+  const {
+    hasNext,
+    hasPrevious,
+    isPlaying,
+    looping,
+    shuffling,
+    episodeList,
+    togglePlay,
+    toggleLoop,
+    toggleShuffle,
+    playNext,
+    playPrevious,
+  } = usePlayer();
 
-    return (
-        <Container className={isMinified ? 'minified' : ''}>
-            <button
-                type="button"
-                disabled={!hasEpisode || episodeList.length === 1}
-                onClick={toggleShuffle}
-                className={shuffling ? 'active' : ''}>
-                <IconShuffle />
-            </button>
+  return (
+    <Container className={isMinified ? 'minified' : ''}>
+      <button
+        type="button"
+        disabled={!hasEpisode || episodeList.length === 1}
+        onClick={toggleShuffle}
+        className={shuffling ? 'active' : ''}
+      >
+        <IconShuffle />
+      </button>
 
-            <button type="button" disabled={!hasEpisode || !hasPrevious} onClick={playPrevious}>
-                <IconPlayPrevious />
-            </button>
+      <button
+        type="button"
+        disabled={!hasEpisode || !hasPrevious}
+        onClick={playPrevious}
+      >
+        <IconPlayPrevious />
+      </button>
 
-            <button
-                type="button"
-                disabled={!hasEpisode}
-                className={['playButton', isPlaying ? 'playing' : ''].join(' ')}
-                onClick={togglePlay}>
-                {isPlaying ? <IconPause /> : <IconPlay />}
-            </button>
+      <button
+        type="button"
+        disabled={!hasEpisode}
+        className={['playButton', isPlaying ? 'playing' : ''].join(' ')}
+        onClick={togglePlay}
+      >
+        {isPlaying ? <IconPause /> : <IconPlay />}
+      </button>
 
-            <button type="button" disabled={!hasEpisode || !hasNext} onClick={playNext}>
-                <IconPlayNext />
-            </button>
+      <button
+        type="button"
+        disabled={!hasEpisode || !hasNext}
+        onClick={playNext}
+      >
+        <IconPlayNext />
+      </button>
 
-            <button
-                type="button"
-                disabled={!hasEpisode}
-                onClick={toggleLoop}
-                className={looping ? 'active' : ''}>
-                <IconRepeat />
-            </button>
-        </Container>
-    );
+      <button
+        type="button"
+        disabled={!hasEpisode}
+        onClick={toggleLoop}
+        className={looping ? 'active' : ''}
+      >
+        <IconRepeat />
+      </button>
+    </Container>
+  );
 }
