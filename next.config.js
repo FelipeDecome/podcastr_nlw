@@ -4,6 +4,7 @@ const withPlugins = require('next-compose-plugins');
 const reactSvg = require('next-react-svg');
 
 const nextConfig = {
+    reactStrictMode: true,
     images: {
         domains: ['cdn-images-1.listennotes.com']
     }
