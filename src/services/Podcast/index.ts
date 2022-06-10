@@ -40,7 +40,7 @@ type Podcast = {
   earliest_pub_date_ms: number;
 };
 
-export const Podcast = {
+export const PodcastService = {
   get: async (id: string) => {
     const { data } = await api.get<Podcast>(`/podcasts/${id}`);
 

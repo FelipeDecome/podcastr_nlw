@@ -9,7 +9,7 @@ import { EpisodeTable } from '../components/EpisodeTable';
 
 import { usePlayer } from '../contexts/PlayerContext';
 
-import { Podcast } from '../services/Podcast';
+import { PodcastService } from '../services/Podcast';
 
 import { Container } from '../styles/components/Home';
 
@@ -72,7 +72,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const podcast = await Podcast.get('618f72ea42f94904bd29cfc1a6edc8b1');
+  const podcast = await PodcastService.get('618f72ea42f94904bd29cfc1a6edc8b1');
 
   const episodes = podcast.episodes.map(episode => {
     return {
