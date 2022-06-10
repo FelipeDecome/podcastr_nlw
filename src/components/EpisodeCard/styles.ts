@@ -37,10 +37,10 @@ export const Header = styled.header`
 
   .podcast-image {
     font-size: 0;
+    max-width: 6rem;
+    max-height: 6rem;
 
-    div {
-      width: 4rem;
-      height: 4rem;
+    span {
       border-radius: 1rem;
     }
   }

@@ -1,13 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 import IconPlayGreen from '../../assets/icons/play-green.svg';
-import { Heading16, Paragraph } from '../../styles/components/Text';
-import { PlayEpisodeButton } from '../PlayEpisodeButton';
-import * as Card from './styles';
 
-type TEpisode = {
+import { Heading16, Paragraph } from '../../styles/components/Text';
+
+import { PlayEpisodeButton } from '../PlayEpisodeButton';
+
+import { Container, Content, Footer, Header } from './styles';
+
+type Episode = {
   id: string;
   podcastInfo: {
     title: string;
@@ -21,15 +23,15 @@ type TEpisode = {
   description: string;
 };
 
-type TEpisodeCardProps = {
-  episode: TEpisode;
+interface EpisodeCardProps {
+  episode: Episode;
   onButtonClick: () => void;
-};
+}
 
-export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
+export function EpisodeCard({ episode, onButtonClick }: EpisodeCardProps) {
   return (
-    <Card.Container>
-      <Card.Header>
+    <Container>
+      <Header>
         <div className="podcast-info">
           <div className="podcast-image">
             <Image
@@ -50,21 +52,21 @@ export function EpisodeCard({ episode, onButtonClick }: TEpisodeCardProps) {
         <PlayEpisodeButton type="button" onClick={onButtonClick}>
           <IconPlayGreen />
         </PlayEpisodeButton>
-      </Card.Header>
+      </Header>
       <hr />
 
-      <Card.Content>
+      <Content>
         <Link href={`/episodes/${episode.id}`}>
           <a>
             <Heading16 as="h3">{episode.title}</Heading16>
           </a>
         </Link>
         <Paragraph>{episode.description}</Paragraph>
-      </Card.Content>
-      <Card.Footer>
+      </Content>
+      <Footer>
         <span>{episode.publishedAt}</span>
         <span>{episode.parsedDuration}</span>
-      </Card.Footer>
-    </Card.Container>
+      </Footer>
+    </Container>
   );
 }
