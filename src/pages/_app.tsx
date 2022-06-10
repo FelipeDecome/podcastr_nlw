@@ -1,15 +1,18 @@
-// import '../utils/replaceAllPolyfill';
+import { AppProps } from 'next/app';
 
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { MinifiedPlayer } from '../components/MinifiedPlayer';
 import { Player } from '../components/Player';
+
 import { AppProvider } from '../contexts/AppContext';
+
 import useWindowSize from '../hooks/useWindowSize';
+
 import { Wrapper } from '../styles/components/App';
 import GlobalStyle from '../styles/globalStyle';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const { width } = useWindowSize();
 
   return (
@@ -24,6 +27,7 @@ function MyApp({ Component, pageProps }) {
 
         {width >= 1440 && <Player />}
       </Wrapper>
+
       <GlobalStyle />
     </AppProvider>
   );
