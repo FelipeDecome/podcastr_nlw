@@ -1,19 +1,24 @@
-import { format } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { ParsedUrlQuery } from 'querystring';
 
 import IconArrowLeft from '../../assets/icons/arrow-left.svg';
 import IconPlay from '../../assets/icons/play.svg';
+
 import { usePlayer } from '../../contexts/PlayerContext';
-import { api } from '../../services/api';
+
+import { EpisodeService } from '../../services/Episode';
+
 import { Container } from '../../styles/components/Episodes';
 import { Paragraph } from '../../styles/components/Text';
+
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
-import { parseString } from '../../utils/parseString';
 
 type IEpisode = {
   id: string;
@@ -68,7 +73,12 @@ export default function Episode({ episode }: TEpisodeProps) {
           <span>{episode.parsedDuration}</span>
         </header>
 
-        <Paragraph className="description">{episode.description}</Paragraph>
+        <Paragraph
+          className="description"
+          dangerouslySetInnerHTML={{
+            __html: episode.description,
+          }}
+        ></Paragraph>
       </div>
     </Container>
   );
@@ -90,26 +100,29 @@ export const getStaticProps: GetStaticProps<
   IParams
 > = async context => {
   const { id } = context.params!;
-  const { data } = await api(`/episodes/${id}`);
+
+  const response = await EpisodeService.get(id);
 
   const episode = {
-    id: data.id,
-    title: data.title,
-    thumbnail: data.thumbnail,
+    id: response.id,
+    title: response.title,
+    thumbnail: response.thumbnail,
     members: 'Juquinha, Aninha e Trevor',
-    publishedAt: format(new Date(data.pub_date_ms), 'd MMM yy', {
+    publishedAt: format(new Date(response.pub_date_ms), 'd MMM yy', {
       locale: ptBR,
     }),
-    duration: data.audio_length_sec,
-    parsedDuration: convertDurationToTimeString(Number(data.audio_length_sec)),
-    description: parseString(data.description),
-    url: data.audio,
+    duration: response.audio_length_sec,
+    parsedDuration: convertDurationToTimeString(
+      Number(response.audio_length_sec),
+    ),
+    description: response.description,
+    url: response.audio,
   };
 
   return {
     props: {
       episode,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60 * 24, // 24 hours,
   };
 };

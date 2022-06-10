@@ -16,6 +16,10 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     min-width: 0;
+
+    > p {
+      padding-bottom: 6rem;
+    }
   }
 
   @media (max-width: 1439px) {
