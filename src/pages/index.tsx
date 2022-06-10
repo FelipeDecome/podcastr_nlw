@@ -1,17 +1,22 @@
-import { format } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { EpisodeCard } from '../components/EpisodeCard';
 import { EpisodeTable } from '../components/EpisodeTable';
+
 import { usePlayer } from '../contexts/PlayerContext';
-import { api } from '../services/api';
+
+import { Podcast } from '../services/Podcast';
+
 import { Container } from '../styles/components/Home';
+
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 import { parseString } from '../utils/parseString';
 
-interface IEpisode {
+type Episode = {
   id: string;
   title: string;
   podcastInfo: {
@@ -25,14 +30,14 @@ interface IEpisode {
   parsedDuration: string;
   url: string;
   description: string;
-}
-
-type THomeProps = {
-  latestEpisodes: IEpisode[];
-  allEpisodes: IEpisode[];
 };
 
-export default function Home({ latestEpisodes, allEpisodes }: THomeProps) {
+interface HomeProps {
+  latestEpisodes: Episode[];
+  allEpisodes: Episode[];
+}
+
+export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
   const { playEpisodeList } = usePlayer();
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
@@ -66,15 +71,15 @@ export default function Home({ latestEpisodes, allEpisodes }: THomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get('/podcasts/618f72ea42f94904bd29cfc1a6edc8b1');
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const podcast = await Podcast.get('618f72ea42f94904bd29cfc1a6edc8b1');
 
-  const episodes = data.episodes.map(episode => {
+  const episodes = podcast.episodes.map(episode => {
     return {
       id: episode.id,
       podcastInfo: {
-        title: data.title,
-        publisher: data.publisher,
+        title: podcast.title,
+        publisher: podcast.publisher,
       },
       title: episode.title,
       thumbnail: episode.thumbnail,
@@ -92,7 +97,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   const latestEpisodes = episodes.slice(0, 2);
-  const allEpisodes = episodes.slice(2, episodes.lenght);
+  const allEpisodes = episodes.slice(2, episodes.length);
 
   return {
     props: {
