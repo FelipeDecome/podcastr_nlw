@@ -1,21 +1,24 @@
-import format from 'date-fns/format';
-import ptBR from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
 import Switch from 'react-switch';
 import { useTheme } from 'styled-components';
 
+import format from 'date-fns/format';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import Logo from '../../assets/icons/logo.svg';
 import MoonIcon from '../../assets/icons/moon.svg';
 import SunIcon from '../../assets/icons/sun.svg';
+
 import { useApp } from '../../contexts/AppContext';
+
 import { Container } from './styles';
+
+const currentDate = format(new Date(), 'EEEEEE, d MMMM', {
+  locale: ptBR,
+});
 
 export function Header() {
   const { item, text } = useTheme();
-
-  const currentDate = format(new Date(), 'EEEEEE, d MMMM', {
-    locale: ptBR,
-  });
 
   const { theme, toggleTheme } = useApp();
 
