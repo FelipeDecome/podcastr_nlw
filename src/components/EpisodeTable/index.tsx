@@ -2,11 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import IconPlayGreen from '../../assets/icons/play-green.svg';
+
 import { usePlayer } from '../../contexts/PlayerContext';
+
 import { PlayEpisodeButton } from '../PlayEpisodeButton';
+
 import { Container } from './styles';
 
-type TEpisode = {
+type Episode = {
   id: string;
   title: string;
   members: string;
@@ -17,12 +20,12 @@ type TEpisode = {
   url: string;
 };
 
-type TEpisodeTableProps = {
-  episodeList: TEpisode[];
-  allEpisodes: TEpisode[];
+type EpisodeTableProps = {
+  episodeList: Episode[];
+  allEpisodes: Episode[];
 };
 
-export function EpisodeTable({ episodeList, allEpisodes }: TEpisodeTableProps) {
+export function EpisodeTable({ episodeList, allEpisodes }: EpisodeTableProps) {
   const { playEpisodeList } = usePlayer();
 
   return (
