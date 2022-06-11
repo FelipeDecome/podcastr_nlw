@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   --top-padding: 0.5rem;
-  padding: var(--top-padding) var(--side-padding);
+  padding: var(--top-padding) var(--side-padding) var(--top-padding) 2rem;
   height: var(--minified-player-height);
 
   display: flex;
@@ -19,8 +19,11 @@ export const Container = styled.div`
   }
 
   > div:first-child:not(.emptyPlayer) {
+    display: flex;
+
     border: 2px solid var(--primary-light);
     border-radius: 1.5rem;
+    overflow: hidden;
   }
 
   .emptyPlayer {

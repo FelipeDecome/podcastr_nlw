@@ -1,27 +1,39 @@
+import Image from 'next/image';
+import { useTheme } from 'styled-components';
+
+import Slider, { SliderProps } from 'rc-slider';
+import { SliderRef } from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 
-import Image from 'next/image';
-import Slider from 'rc-slider';
-
 import { usePlayer } from '../../contexts/PlayerContext';
+
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
+
 import { PlayerControls } from '../PlayerControls';
+
 import { Container } from './styles';
+
+const SliderWithCorrectTypes = Slider as React.ForwardRefExoticComponent<
+  SliderProps<number> & React.RefAttributes<SliderRef>
+>;
 
 export function MinifiedPlayer() {
   const { progress, episode, handleSliderChange } = usePlayer();
+  const { primary, secondary } = useTheme();
 
   return (
     <Container>
       {episode ? (
-        <Image
-          width={488}
-          height={272}
-          src={episode.thumbnail}
-          alt={episode.title}
-          objectFit="cover"
-          className="episodeImage"
-        />
+        <div>
+          <Image
+            width={244}
+            height={120}
+            src={episode.thumbnail}
+            alt={episode.title}
+            objectFit="cover"
+            className="episodeImage"
+          />
+        </div>
       ) : (
         <div className="emptyPlayer"></div>
       )}
@@ -43,13 +55,13 @@ export function MinifiedPlayer() {
             <span>{convertDurationToTimeString(progress)}</span>
             <div className="slider">
               {episode ? (
-                <Slider
+                <SliderWithCorrectTypes
                   max={episode?.duration}
                   value={progress}
                   onChange={handleSliderChange}
-                  trackStyle={{ backgroundColor: '#03D8E5' }}
-                  railStyle={{ backgroundColor: '#822B80' }}
-                  handleStyle={{ borderColor: '#03D8E5' }}
+                  trackStyle={{ backgroundColor: secondary }}
+                  railStyle={{ backgroundColor: primary.light }}
+                  handleStyle={{ borderColor: secondary }}
                 />
               ) : (
                 <div className="emptySlider" />
