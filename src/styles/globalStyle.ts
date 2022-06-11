@@ -11,7 +11,7 @@ export default createGlobalStyle`
 :root {
     --minified-player-height: 8.5rem;
     --header-height: 6.5rem;
-    --footer-height: 4.5rem;
+    --footer-height: 3.5rem;
     --side-padding: 4rem;
 
     ${props => {
