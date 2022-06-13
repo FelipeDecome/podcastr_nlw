@@ -1,14 +1,23 @@
-import 'rc-slider/assets/index.css';
-
 import Image from 'next/image';
-import Slider from 'rc-slider';
+
+import Slider, { SliderProps } from 'rc-slider';
+import { SliderRef } from 'rc-slider/lib/Slider';
+import 'rc-slider/assets/index.css';
 
 import IconNotPlaying from '../../assets/icons/not-playing.svg';
 import IconPlaying from '../../assets/icons/playing.svg';
+
 import { usePlayer } from '../../contexts/PlayerContext';
+
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
+
 import { PlayerControls } from '../PlayerControls';
+
 import { Container } from './styles';
+
+const SliderWithCorrectTypes = Slider as React.ForwardRefExoticComponent<
+  SliderProps<number> & React.RefAttributes<SliderRef>
+>;
 
 export function Player() {
   const { episode, progress, handleSliderChange } = usePlayer();
@@ -23,13 +32,15 @@ export function Player() {
           </header>
 
           <div className="currentEpisode">
-            <Image
-              width={592}
-              height={592}
-              src={episode.thumbnail}
-              alt={episode.title}
-              objectFit="cover"
-            />
+            <div>
+              <Image
+                width={592}
+                height={592}
+                src={episode.thumbnail}
+                alt={episode.title}
+                objectFit="cover"
+              />
+            </div>
             <strong>{episode.title}</strong>
           </div>
         </>
@@ -51,7 +62,7 @@ export function Player() {
           <span>{convertDurationToTimeString(progress)}</span>
           <div className="slider">
             {episode ? (
-              <Slider
+              <SliderWithCorrectTypes
                 max={episode?.duration}
                 value={progress}
                 onChange={handleSliderChange}

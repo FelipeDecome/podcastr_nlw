@@ -37,8 +37,10 @@ export const Container = styled.aside`
     text-align: center;
 
     > div {
-        border: 2px solid var(--primary-light);
-        border-radius: 1.5rem;
+      display: flex;
+      border: 2px solid var(--primary-light);
+      border-radius: 1.5rem;
+      overflow: hidden;
     }
 
     strong {
@@ -80,7 +82,7 @@ export const Container = styled.aside`
         flex: 1;
 
         .emptySlider {
-           width: 100%; 
+           width: 100%;
            height: 4px;
            background: var(--primary-lighter);
            border-radius: 2px;
