@@ -4,10 +4,12 @@ import IconPlayNext from '../../assets/icons/play-next.svg';
 import IconPlayPrevious from '../../assets/icons/play-previous.svg';
 import IconRepeat from '../../assets/icons/repeat.svg';
 import IconShuffle from '../../assets/icons/shuffle.svg';
+
 import { usePlayer } from '../../contexts/PlayerContext';
+
 import { Container } from './styles';
 
-type TPlayerControlsProps = {
+type PlayerControlsProps = {
   hasEpisode: boolean;
   isMinified?: boolean;
 };
@@ -15,7 +17,7 @@ type TPlayerControlsProps = {
 export function PlayerControls({
   hasEpisode,
   isMinified,
-}: TPlayerControlsProps) {
+}: PlayerControlsProps) {
   const {
     hasNext,
     hasPrevious,
