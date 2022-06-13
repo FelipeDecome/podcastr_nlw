@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import IconPlayGreen from '../../assets/icons/play-green.svg';
 
-import { usePlayer } from '../../contexts/PlayerContext';
+import { usePlayer } from '../../hooks/usePlayer';
 
 import { PlayEpisodeButton } from '../PlayEpisodeButton';
 

@@ -5,9 +5,8 @@ import { Header } from '../components/Header';
 import { MinifiedPlayer } from '../components/MinifiedPlayer';
 import { Player } from '../components/Player';
 
-import { AppProvider } from '../contexts/AppContext';
-
 import useWindowSize from '../hooks/useWindowSize';
+import { AppProvider } from '../hooks';
 
 import { Wrapper } from '../styles/components/App';
 import GlobalStyle from '../styles/globalStyle';

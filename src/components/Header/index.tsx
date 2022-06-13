@@ -9,7 +9,7 @@ import Logo from '../../assets/icons/logo.svg';
 import MoonIcon from '../../assets/icons/moon.svg';
 import SunIcon from '../../assets/icons/sun.svg';
 
-import { useApp } from '../../contexts/AppContext';
+import { useAppTheme } from '../../hooks/useAppTheme';
 
 import { Container } from './styles';
 
@@ -20,7 +20,7 @@ const currentDate = format(new Date(), 'EEEEEE, d MMMM', {
 export function Header() {
   const { item, text } = useTheme();
 
-  const { theme, toggleTheme } = useApp();
+  const { theme, toggleTheme } = useAppTheme();
 
   return (
     <Container>

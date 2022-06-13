@@ -7,7 +7,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { EpisodeCard } from '../components/EpisodeCard';
 import { EpisodeTable } from '../components/EpisodeTable';
 
-import { usePlayer } from '../contexts/PlayerContext';
+import { usePlayer } from '../hooks/usePlayer';
 
 import { PodcastService } from '../services/Podcast';
 

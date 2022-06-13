@@ -1,53 +1,17 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
-import { localStorageConfig } from '../config/localStorage';
+import { localStorageConfig } from '../../config/localStorage';
 
-type TEpisode = {
-  id: string;
-  title: string;
-  members: string;
-  thumbnail: string;
-  duration: number;
-  url: string;
-};
+import { PlayerContext } from './context';
 
-type TPlayerContextData = {
-  episodeList: TEpisode[];
-  currentEpisodeIndex: number;
-  episode: TEpisode;
-  progress: number;
-  isPlaying: boolean;
-  hasNext: boolean;
-  hasPrevious: boolean;
-  looping: boolean;
-  shuffling: boolean;
-  play: (episode: TEpisode) => void;
-  togglePlay: () => void;
-  setPlayingState: (state: boolean) => void;
-  playEpisodeList: (list: TEpisode[], index: number) => void;
-  playNext: () => void;
-  playPrevious: () => void;
-  toggleLoop: () => void;
-  toggleShuffle: () => void;
-  clearPlayerState: () => void;
-  handleSliderChange: (duration: number) => void;
-};
+import { Episode } from './types';
 
-type IPlayerProviderProps = {
+interface PlayerProviderProps {
   children: ReactNode;
-};
+}
 
-export const PlayerContext = createContext({} as TPlayerContextData);
-
-export function PlayerProvider({ children }: IPlayerProviderProps) {
-  const [episodeList, setEpisodeList] = useState<TEpisode[]>([]);
+export function PlayerProvider({ children }: PlayerProviderProps) {
+  const [episodeList, setEpisodeList] = useState<Episode[]>([]);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -60,13 +24,13 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
   const hasNext = shuffling || currentEpisodeIndex + 1 < episodeList.length;
   const episode = episodeList[currentEpisodeIndex];
 
-  function play(episode: TEpisode) {
+  function play(episode: Episode) {
     setEpisodeList([episode]);
     setCurrentEpisodeIndex(0);
     setIsPlaying(true);
   }
 
-  function playEpisodeList(list: TEpisode[], index: number) {
+  function playEpisodeList(list: Episode[], index: number) {
     setEpisodeList(list);
     setCurrentEpisodeIndex(index);
     setIsPlaying(true);
@@ -209,5 +173,3 @@ export function PlayerProvider({ children }: IPlayerProviderProps) {
     </PlayerContext.Provider>
   );
 }
-
-export const usePlayer = () => useContext(PlayerContext);

@@ -5,7 +5,7 @@ import IconPlayPrevious from '../../assets/icons/play-previous.svg';
 import IconRepeat from '../../assets/icons/repeat.svg';
 import IconShuffle from '../../assets/icons/shuffle.svg';
 
-import { usePlayer } from '../../contexts/PlayerContext';
+import { usePlayer } from '../../hooks/usePlayer';
 
 import { Container } from './styles';
 

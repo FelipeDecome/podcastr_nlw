@@ -11,7 +11,7 @@ import { ParsedUrlQuery } from 'querystring';
 import IconArrowLeft from '../../assets/icons/arrow-left.svg';
 import IconPlay from '../../assets/icons/play.svg';
 
-import { usePlayer } from '../../contexts/PlayerContext';
+import { usePlayer } from '../../hooks/usePlayer';
 
 import { EpisodeService } from '../../services/Episode';
 
@@ -20,7 +20,7 @@ import { Paragraph } from '../../styles/components/Text';
 
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
-type IEpisode = {
+type Episode = {
   id: string;
   title: string;
   members: string;
@@ -32,11 +32,11 @@ type IEpisode = {
   url: string;
 };
 
-type TEpisodeProps = {
-  episode: IEpisode;
-};
+interface EpisodeProps {
+  episode: Episode;
+}
 
-export default function Episode({ episode }: TEpisodeProps) {
+export default function Episode({ episode }: EpisodeProps) {
   const { play } = usePlayer();
 
   return (
@@ -96,7 +96,7 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticProps: GetStaticProps<
-  TEpisodeProps,
+  EpisodeProps,
   IParams
 > = async context => {
   const { id } = context.params!;

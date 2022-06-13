@@ -7,7 +7,7 @@ import 'rc-slider/assets/index.css';
 import IconNotPlaying from '../../assets/icons/not-playing.svg';
 import IconPlaying from '../../assets/icons/playing.svg';
 
-import { usePlayer } from '../../contexts/PlayerContext';
+import { usePlayer } from '../../hooks/usePlayer';
 
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
