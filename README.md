@@ -1,6 +1,7 @@
 <br>
 <p align="center">
-    <img width="400" src="./public/logo.svg" />
+  <img width="320" alt="Podcastr Logo" src="./public/logo-dark.svg#gh-dark-mode-only">
+  <img width="320" alt="Podcastr Logo" src="./public/logo-light.svg#gh-light-mode-only">
 </p>
 
 <br>
@@ -62,8 +63,8 @@ The project goal was to build a web platform to listen to podcasts.
 
 #### _Ongoing_
 
+-   [ ] Replace Styled-Components with `StitchesJS` or `TailwindCSS`.
 -   [ ] Add eslint import sorter.
--   [ ] Replace Styled-Components with StitchesJS.
 
 <br>
 
