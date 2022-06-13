@@ -1,31 +1,31 @@
 import 'styled-components';
 
-type TTextColors = {
+interface TextColors {
   heading: string;
   default: string;
   complement: string;
   inColors: string;
-};
+}
 
-type TItemsColors = {
+interface ItemsColors {
   complement: string;
   background: string;
-};
+}
 
-type TPrimaryColors = {
+interface PrimaryColors {
   lighter: string;
   light: string;
   default: string;
   dark: string;
-};
+}
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     title: 'light' | 'dark';
-    text: TTextColors;
-    item: TItemsColors;
+    text: TextColors;
+    item: ItemsColors;
     background: string;
-    primary: TPrimaryColors;
+    primary: PrimaryColors;
     secondary: string;
   }
 }
