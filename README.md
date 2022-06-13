@@ -28,11 +28,11 @@ The project goal was to build a web platform to listen to podcasts.
 #### _Ongoing_
 
 -   [ ] Create a landing page.
--   [ ] Implements a Search to find podcasts and episodes.
+-   [ ] Improve UI/UX.
 -   [ ] Add a Podcast series page.
 -   [ ] Add comments to episodes.
 -   [ ] Add ratings to episodes.
--   [ ] Improve UI/UX.
+-   [ ] Implements a Search to find podcasts and episodes.
 
 ## Chores
 
@@ -58,6 +58,12 @@ The project goal was to build a web platform to listen to podcasts.
 -   [x] Upgrade packages.
 -   [x] Update Colors.
 -   [x] Add conventional commits.
+-   [x] Code refactoring (improve folder structure and types).
+
+#### _Ongoing_
+
+-   [ ] Add eslint import sorter.
+-   [ ] Replace Styled-Components with StitchesJS.
 
 <br>
 
